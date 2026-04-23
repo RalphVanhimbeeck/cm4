@@ -13,11 +13,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="h-screen flex flex-col overflow-hidden">
         <GlobalNavbar />
-        <div className="flex-1 overflow-hidden mx-auto w-full px-20 mt-2">
+        <div className="flex-1 overflow-hidden mx-auto w-full">
             {children}
-        </div>
-        <div className="fixed bottom-0 left-0 right-0">
-          <Footer />
         </div>
         <AppToaster />
       </body>

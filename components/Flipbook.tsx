@@ -160,7 +160,7 @@ function PageLabel({
 /* =========================
    COMPONENT
 ========================= */
-export default function Flipbook(): JSX.Element {
+export default function Flipbook()  {
   const [spreadIndex, setSpreadIndex] = useState<number>(0);
   const touchStartX = useRef<number | null>(null);
 
