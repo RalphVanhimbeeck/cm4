@@ -1,0 +1,46 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 🔥 belangrijk */
+  align-items: center;
+  height: 100vh; /* 🔥 geen scroll meer */
+  overflow: hidden;
+}
+
+.book {
+  width: 80vw;
+  max-width: 1000px;
+  height: 60vh; /* 🔥 ruimte voor buttons */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-origin: left;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+  cursor: pointer;
+}
+
+.page.flipped {
+  transform: rotateY(-180deg);
+}
+
+.page {
+  position: relative;
+  width: 100%;
+}
+
+.front,
+.back {
+  position: absolute;
+  inset: 0;
+}
+
+.controls {
+  margin-top: 20px;
+}
