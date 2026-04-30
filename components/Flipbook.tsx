@@ -29,7 +29,7 @@ const pages: Page[] = [
   },
   // 1 — INSIDE COVER
   { id: "inside-cover", content: null },
-  // 2 — Page 1
+  // 2 — Page 1  (spread 1: Inside / 1)
   {
     id: "page-1",
     content: (
@@ -39,40 +39,101 @@ const pages: Page[] = [
       </div>
     ),
   },
-  // 3 — Page 2
+  // 3 — Page 2  (LINKERPAGINA spread 2: "2/3")
   {
     id: "page-2",
     content: (
-      <div className="grid grid-cols-2 gap-4">
-        <div className="bg-gray-100 p-2">Left column</div>
-        <div className="bg-gray-200 p-2">Right column</div>
+      <div className="flex flex-row w-full h-full gap-3">
+        <div className="flex-1 bg-gray-200 rounded overflow-hidden flex items-center justify-center">
+          <span className="text-gray-400 text-sm">Foto</span>
+        </div>
+        <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
+          <p className="text-xs text-gray-500 leading-relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </p>
+        </div>
       </div>
     ),
   },
-  // 4 — Page 3
+  // 4 — Page 3  (RECHTERPAGINA spread 2: "2/3")
   {
     id: "page-3",
     content: (
-      <div className="bg-blue-100 p-4 rounded">Custom styled page</div>
-    ),
-  },
-  // 5 — Page 4
-  {
-    id: "page-4",
-    content: (
-      <div>
-        <h2 className="text-2xl font-semibold">Page 4</h2>
-        <p>Extra content page</p>
+      <div className="flex flex-col w-full h-full gap-3">
+        <div className="flex flex-1 gap-3">
+          <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
+            <p className="text-xs text-gray-500 leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim
+              ad minim veniam, quis nostrud exercitation ullamco laboris.
+            </p>
+          </div>
+          <div className="flex-1 bg-gray-200 rounded overflow-hidden flex items-center justify-center">
+            <span className="text-gray-400 text-sm">Foto</span>
+          </div>
+        </div>
+        <div className="flex flex-1 gap-3">
+          <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
+            <p className="text-xs text-gray-500 leading-relaxed">
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+              officia deserunt mollit anim id est laborum consectetur.
+            </p>
+          </div>
+          <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
+            <p className="text-xs text-gray-500 leading-relaxed">
+              Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur excepteur sint occaecat.
+            </p>
+          </div>
+        </div>
       </div>
     ),
   },
-  // 6 — Page 5
+  // 5 — Page 4  (LINKERPAGINA spread 3: "4/5")
+  // Op desktop enkel de 2 linker tekstblokken — foto en rechtertekst op spread-niveau
+  {
+    id: "page-4",
+    content: (
+      <div className="flex flex-col w-full h-full gap-3">
+        <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
+          <p className="text-xs text-gray-500 leading-relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+            enim ad minim veniam quis nostrud exercitation ullamco.
+          </p>
+        </div>
+        <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
+          <p className="text-xs text-gray-500 leading-relaxed">
+            Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident deserunt mollit.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  // 6 — Page 5  (RECHTERPAGINA spread 3: "4/5")
+  // Op desktop enkel de 2 rechter tekstblokken — foto en linkertekst op spread-niveau
   {
     id: "page-5",
     content: (
-      <div className="grid grid-cols-2 gap-4">
-        <div className="bg-gray-100 p-2">Column A</div>
-        <div className="bg-gray-200 p-2">Column B</div>
+      <div className="flex flex-col w-full h-full gap-3">
+        <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
+          <p className="text-xs text-gray-500 leading-relaxed">
+            Sunt in culpa qui officia deserunt mollit anim id est laborum
+            consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste
+            natus error sit voluptatem accusantium doloremque.
+          </p>
+        </div>
+        <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
+          <p className="text-xs text-gray-500 leading-relaxed">
+            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
+            aut fugit, sed quia consequuntur magni dolores eos qui ratione
+            sequi nesciunt neque porro quisquam.
+          </p>
+        </div>
       </div>
     ),
   },
@@ -80,8 +141,34 @@ const pages: Page[] = [
   {
     id: "page-6",
     content: (
-      <div className="bg-green-100 p-4 rounded">
-        Another styled page
+      <div className="flex flex-col w-full h-full gap-3">
+        
+        {/* Boven */}
+        <div className="flex flex-1 gap-3">
+          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+            Foto
+          </div>
+          <div className="flex-1 bg-gray-100 rounded p-3">
+  <p className="text-xs text-gray-500 leading-relaxed">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </p>
+</div>
+        </div>
+  
+        {/* Onder */}
+        <div className="flex flex-1 gap-3">
+        <div className="flex-1 bg-gray-100 rounded p-3">
+  <p className="text-xs text-gray-500 leading-relaxed">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </p>
+</div>
+          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+            Foto
+          </div>
+        </div>
+  
       </div>
     ),
   },
@@ -89,9 +176,48 @@ const pages: Page[] = [
   {
     id: "page-7",
     content: (
-      <div>
-        <h2 className="text-2xl font-semibold">Page 7</h2>
-        <p>More magazine content</p>
+      <div className="flex flex-col w-full h-full gap-3">
+  
+        {/* Boven */}
+        <div className="flex gap-3 flex-[1]">
+          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+            Foto
+          </div>
+          <div className="flex-1 bg-gray-100 rounded p-3">
+  <p className="text-xs text-gray-500 leading-relaxed">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </p>
+</div>
+        </div>
+  
+        {/* Midden (gesplitst: tekst + foto) */}
+        <div className="flex gap-3 flex-[1.5]">
+        <div className="flex-1 bg-gray-100 rounded p-3">
+  <p className="text-xs text-gray-500 leading-relaxed">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </p>
+</div>
+        
+          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+            Foto
+          </div>
+        </div>
+  
+        {/* Onder */}
+        <div className="flex gap-3 flex-[1.5]">
+          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+            Foto
+          </div>
+          <div className="flex-1 bg-gray-100 rounded p-3">
+          <p className="text-xs text-gray-500 leading-relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+</div>
+        </div>
+  
       </div>
     ),
   },
@@ -106,7 +232,7 @@ const pages: Page[] = [
    SPREADS
 ========================= */
 const totalSpreads = 5;
-const totalPages = pages.length - 1; // index 0..9
+const totalPages = pages.length - 1;
 
 type SpreadMeta = {
   left: { pageNumber: number; theme: string } | null;
@@ -122,18 +248,17 @@ const spreadMeta: SpreadMeta[] = [
   { left: null, right: null },
 ];
 
-/* Label per individuele pagina (voor mobile) */
 const pageMeta: ({ pageNumber: number; theme: string } | null)[] = [
-  null,                                    // 0 cover
-  null,                                    // 1 inside cover
-  { pageNumber: 1, theme: "Thema" },       // 2
-  { pageNumber: 2, theme: "Thema" },       // 3
-  { pageNumber: 3, theme: "Thema" },       // 4
-  { pageNumber: 4, theme: "Thema" },       // 5
-  { pageNumber: 5, theme: "Thema" },       // 6
-  { pageNumber: 6, theme: "Thema" },       // 7
-  { pageNumber: 7, theme: "Thema" },       // 8
-  null,                                    // 9 back cover
+  null,
+  null,
+  { pageNumber: 1, theme: "Thema" },
+  { pageNumber: 2, theme: "Thema" },
+  { pageNumber: 3, theme: "Thema" },
+  { pageNumber: 4, theme: "Thema" },
+  { pageNumber: 5, theme: "Thema" },
+  { pageNumber: 6, theme: "Thema" },
+  { pageNumber: 7, theme: "Thema" },
+  null,
 ];
 
 /* =========================
@@ -162,25 +287,73 @@ function PageLabel({
 }
 
 /* =========================
+   SPREAD 4/5 — aparte component
+   Foto als horizontale balk over de volledige spread,
+   4 tekstblokken naast elkaar eronder.
+========================= */
+function CrossSpread({
+  leftContent,
+  rightContent,
+  metaLeft,
+  metaRight,
+}: {
+  leftContent: React.ReactNode;
+  rightContent: React.ReactNode;
+  metaLeft: { pageNumber: number; theme: string } | null;
+  metaRight: { pageNumber: number; theme: string } | null;
+}) {
+  return (
+    <div className="hidden md:flex gap-4 w-full h-full justify-center">
+      {/* Linkerpagina */}
+      <div
+        className="relative h-full border rounded shadow bg-white overflow-hidden flex flex-col"
+        style={{ aspectRatio: "3/4" }}
+      >
+        {/* Foto — bovenste helft, loopt door via rechterpagina */}
+        <div className="flex-[3] bg-gray-200 flex items-center justify-center">
+          {/* lege placeholder, visueel doorlopend via rechterpagina */}
+        </div>
+        {/* Tekst — onderste helft, linker 2 blokken */}
+        <div className="flex-[2] flex flex-row gap-3 p-4 pt-3">
+          {leftContent}
+        </div>
+        <PageLabel side="left" meta={metaLeft} />
+      </div>
+
+      {/* Rechterpagina */}
+      <div
+        className="relative h-full border rounded shadow bg-white overflow-hidden flex flex-col"
+        style={{ aspectRatio: "3/4" }}
+      >
+        {/* Foto — bovenste helft, doorlopend van linkerpagina */}
+        <div className="flex-[3] bg-gray-200 flex items-center justify-center">
+          <span className="text-gray-400 text-sm">Foto</span>
+        </div>
+        {/* Tekst — onderste helft, rechter 2 blokken */}
+        <div className="flex-[2] flex flex-row gap-3 p-4 pt-3">
+          {rightContent}
+        </div>
+        <PageLabel side="right" meta={metaRight} />
+      </div>
+    </div>
+  );
+}
+
+/* =========================
    COMPONENT
 ========================= */
 export default function Flipbook() {
-  // Desktop: spread index (0–5)
   const [spreadIndex, setSpreadIndex] = useState<number>(0);
-  // Mobile: individuele pagina index (0–9)
   const [mobilePageIndex, setMobilePageIndex] = useState<number>(0);
 
   const touchStartX = useRef<number | null>(null);
 
-  /* Desktop navigatie */
   const nextSpread = () => setSpreadIndex((s) => Math.min(s + 1, totalSpreads));
   const prevSpread = () => setSpreadIndex((s) => Math.max(s - 1, 0));
 
-  /* Mobile navigatie */
   const nextPage = () => setMobilePageIndex((p) => Math.min(p + 1, totalPages));
   const prevPage = () => setMobilePageIndex((p) => Math.max(p - 1, 0));
 
-  // Keyboard — desktop
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowRight") nextSpread();
@@ -190,7 +363,6 @@ export default function Flipbook() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [spreadIndex]);
 
-  // Touch swipe — mobile
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     touchStartX.current = e.touches[0].clientX;
   };
@@ -202,7 +374,6 @@ export default function Flipbook() {
     touchStartX.current = null;
   };
 
-  /* Desktop spread */
   const isCover = spreadIndex === 0;
   const isBackCover = spreadIndex === totalSpreads;
 
@@ -221,23 +392,49 @@ export default function Flipbook() {
   const { left, right } = getSpread();
   const currentMeta = spreadMeta[spreadIndex];
 
-  /* Mobile huidige pagina */
   const mobilePage = pages[mobilePageIndex];
   const mobileIsCover = mobilePageIndex === 0;
   const mobileIsBackCover = mobilePageIndex === totalPages;
 
-  const spreadLabels = [
-    "Cover",
-    "Inside / 1",
-    "2 / 3",
-    "4 / 5",
-    "6 / 7",
-    "Rear",
-  ];
+  const spreadLabels = ["Cover", "Inside / 1", "2 / 3", "4 / 5", "6 / 7", "Rear"];
+
+  /* Tekstblokken voor spread 4/5 — links en rechts apart doorgeven */
+  const spread45LeftContent = (
+    <>
+      <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-2 overflow-hidden">
+        <p className="text-xs text-gray-500 leading-relaxed">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </div>
+      <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-2 overflow-hidden">
+        <p className="text-xs text-gray-500 leading-relaxed">
+          Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur excepteur sint.
+        </p>
+      </div>
+    </>
+  );
+
+  const spread45RightContent = (
+    <>
+      <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-2 overflow-hidden">
+        <p className="text-xs text-gray-500 leading-relaxed">
+          Sunt in culpa qui officia deserunt mollit anim id est laborum
+          consectetur adipiscing elit ut perspiciatis unde omnis.
+        </p>
+      </div>
+      <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-2 overflow-hidden">
+        <p className="text-xs text-gray-500 leading-relaxed">
+          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
+          aut fugit sed quia consequuntur magni dolores eos.
+        </p>
+      </div>
+    </>
+  );
 
   return (
     <div className={styles.wrapper}>
-      {/* BOOK */}
       <div
         className="w-full max-w-5xl mx-auto px-2 sm:px-4"
         style={{ height: "62vh" }}
@@ -245,26 +442,36 @@ export default function Flipbook() {
         onTouchEnd={handleTouchEnd}
       >
         {/* DESKTOP — spread view */}
-        <div className="hidden md:flex gap-4 w-full h-full justify-center">
-          {!isCover && (
-            <div className="relative aspect-[3/4] h-full border rounded shadow bg-white flex items-center justify-center p-6">
-              {left}
-              <PageLabel side="left" meta={currentMeta.left} />
-            </div>
-          )}
-          {!isBackCover && (
-            <div
-              className={`relative aspect-[3/4] h-full border rounded shadow bg-white flex items-center justify-center overflow-hidden ${
-                isCover ? "p-0" : "p-6"
-              }`}
-            >
-              {right}
-              {!isCover && (
-                <PageLabel side="right" meta={currentMeta.right} />
-              )}
-            </div>
-          )}
-        </div>
+        {spreadIndex === 3 ? (
+          /* Spread 4/5 — foto bovenaan over volledige breedte, tekst eronder */
+          <CrossSpread
+            leftContent={spread45LeftContent}
+            rightContent={spread45RightContent}
+            metaLeft={currentMeta.left}
+            metaRight={currentMeta.right}
+          />
+        ) : (
+          <div className="hidden md:flex gap-4 w-full h-full justify-center">
+            {!isCover && (
+              <div className="relative aspect-[3/4] h-full border rounded shadow bg-white flex items-center justify-center p-6">
+                {left}
+                <PageLabel side="left" meta={currentMeta.left} />
+              </div>
+            )}
+            {!isBackCover && (
+              <div
+                className={`relative aspect-[3/4] h-full border rounded shadow bg-white flex items-center justify-center overflow-hidden ${
+                  isCover ? "p-0" : "p-6"
+                }`}
+              >
+                {right}
+                {!isCover && (
+                  <PageLabel side="right" meta={currentMeta.right} />
+                )}
+              </div>
+            )}
+          </div>
+        )}
 
         {/* MOBILE — één pagina tegelijk */}
         <div className="md:hidden w-full h-full flex items-center justify-center">
@@ -274,7 +481,6 @@ export default function Flipbook() {
             }`}
           >
             {mobilePage.content}
-
             {!mobileIsCover && !mobileIsBackCover && (
               <PageLabel side="right" meta={pageMeta[mobilePageIndex]} />
             )}
@@ -302,7 +508,6 @@ export default function Flipbook() {
 
       {/* NAV */}
       <div className="flex items-center justify-center gap-2 mt-2 flex-wrap">
-        {/* Pijltje vorige — alleen mobile */}
         <button
           className="md:hidden w-8 h-8 flex items-center justify-center rounded-full border bg-white shadow text-lg disabled:opacity-30"
           onClick={prevPage}
@@ -312,7 +517,6 @@ export default function Flipbook() {
           ‹
         </button>
 
-        {/* Spread labels — alleen desktop */}
         {spreadLabels.map((label, i) => (
           <button
             key={i}
@@ -325,12 +529,10 @@ export default function Flipbook() {
           </button>
         ))}
 
-        {/* Paginateller — alleen mobile */}
         <span className="md:hidden text-xs text-gray-500">
           {mobilePageIndex + 1} / {totalPages + 1}
         </span>
 
-        {/* Pijltje volgende — alleen mobile */}
         <button
           className="md:hidden w-8 h-8 flex items-center justify-center rounded-full border bg-white shadow text-lg disabled:opacity-30"
           onClick={nextPage}
