@@ -149,21 +149,21 @@ const pages: Page[] = [
             Foto
           </div>
           <div className="flex-1 bg-gray-100 rounded p-3">
-  <p className="text-xs text-gray-500 leading-relaxed">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>
+            <p className="text-xs text-gray-500 leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
 </div>
         </div>
   
         {/* Onder */}
         <div className="flex flex-1 gap-3">
         <div className="flex-1 bg-gray-100 rounded p-3">
-  <p className="text-xs text-gray-500 leading-relaxed">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>
-</div>
+          <p className="text-xs text-gray-500 leading-relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
           <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
             Foto
           </div>
@@ -184,21 +184,21 @@ const pages: Page[] = [
             Foto
           </div>
           <div className="flex-1 bg-gray-100 rounded p-3">
-  <p className="text-xs text-gray-500 leading-relaxed">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>
-</div>
+            <p className="text-xs text-gray-500 leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
         </div>
   
         {/* Midden (gesplitst: tekst + foto) */}
         <div className="flex gap-3 flex-[1.5]">
         <div className="flex-1 bg-gray-100 rounded p-3">
-  <p className="text-xs text-gray-500 leading-relaxed">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>
-</div>
+          <p className="text-xs text-gray-500 leading-relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
         
           <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
             Foto
@@ -215,12 +215,118 @@ const pages: Page[] = [
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
             Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
-</div>
+        </div>
         </div>
   
       </div>
     ),
   },
+
+  // 🔥 9 — Page 8 (LINKS - nieuwe spread)
+{
+  id: "page-8",
+  content: (
+    <div className="flex flex-col w-full h-full gap-3">
+      
+      <div className="flex gap-3 flex-1">
+        <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+          Foto
+        </div>
+        <div className="flex-1 bg-gray-100 rounded p-3">
+          <p className="text-xs text-gray-500 leading-relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+        </div>
+      </div>
+
+      <div className="flex-1 bg-gray-100 rounded p-3">
+        <p className="text-xs text-gray-500 leading-relaxed">
+          Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore.
+        </p>
+      </div>
+
+    </div>
+  ),
+},
+
+// 🔥 10 — Page 9 (RECHTS)
+{
+  id: "page-9",
+  content: (
+    <div className="flex flex-row w-full h-full gap-3">
+      
+      <div className="flex-[2] bg-gray-100 rounded p-3">
+        <p className="text-sm text-gray-500 leading-relaxed">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+          Ut enim ad minim veniam quis nostrud exercitation.
+        </p>
+      </div>
+
+      <div className="flex-1 flex flex-col gap-3">
+        <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+          Foto
+        </div>
+        <div className="flex-1 bg-gray-100 rounded p-3">
+          <p className="text-xs text-gray-500">
+            Lorem ipsum
+          </p>
+        </div>
+      </div>
+
+    </div>
+  ),
+},
+
+// 🔥 11 — Page 10 (LINKS - volgende spread)
+{
+  id: "page-10",
+  content: (
+    <div className="grid grid-cols-2 gap-3 w-full h-full">
+      
+      <div className="bg-gray-100 rounded p-3">
+        <p className="text-xs text-gray-500">Lorem ipsum</p>
+      </div>
+
+      <div className="bg-gray-200 rounded flex items-center justify-center">
+        Foto
+      </div>
+
+      <div className="bg-gray-200 rounded flex items-center justify-center">
+        Foto
+      </div>
+
+      <div className="bg-gray-100 rounded p-3">
+        <p className="text-xs text-gray-500">Lorem ipsum</p>
+      </div>
+
+    </div>
+  ),
+},
+
+// 🔥 12 — Page 11 (RECHTS)
+{
+  id: "page-11",
+  content: (
+    <div className="flex flex-col w-full h-full gap-3">
+
+      <div className="flex-1 bg-gray-100 rounded p-3">
+        <p className="text-xs text-gray-500 leading-relaxed">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+      </div>
+
+      <div className="flex gap-3 flex-1">
+        <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+          Foto
+        </div>
+        <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+          Foto
+        </div>
+      </div>
+
+    </div>
+  ),
+},
   // 9 — BACK COVER
   {
     id: "back-cover",
@@ -231,7 +337,7 @@ const pages: Page[] = [
 /* =========================
    SPREADS
 ========================= */
-const totalSpreads = 5;
+const totalSpreads = 7;
 const totalPages = pages.length - 1;
 
 type SpreadMeta = {
@@ -242,9 +348,11 @@ type SpreadMeta = {
 const spreadMeta: SpreadMeta[] = [
   { left: null, right: null },
   { left: null, right: { pageNumber: 1, theme: "Thema" } },
-  { left: { pageNumber: 2, theme: "Thema" }, right: { pageNumber: 3, theme: "Thema" } },
-  { left: { pageNumber: 4, theme: "Thema" }, right: { pageNumber: 5, theme: "Thema" } },
-  { left: { pageNumber: 6, theme: "Thema" }, right: { pageNumber: 7, theme: "Thema" } },
+  { left: { pageNumber: 2, theme: "Sound Design" }, right: { pageNumber: 3, theme: "Sound Design" } },
+  { left: { pageNumber: 4, theme: "Data driven grafische objecten" }, right: { pageNumber: 5, theme: "Data driven grafische objecten" } },
+  { left: { pageNumber: 6, theme: "Grafiek in tijd en ruimte" }, right: { pageNumber: 7, theme: "Grafiek in tijd en ruimte" } },
+  { left: { pageNumber: 8, theme: "Interactieve informatie structuren" }, right: { pageNumber: 9, theme: "Interactieve informatie structuren" } },
+  { left: { pageNumber: 10, theme: "Sequentiële grafische systemen" }, right: { pageNumber: 11, theme: "Sequentiële grafische systemen" } },
   { left: null, right: null },
 ];
 
@@ -258,6 +366,10 @@ const pageMeta: ({ pageNumber: number; theme: string } | null)[] = [
   { pageNumber: 5, theme: "Thema" },
   { pageNumber: 6, theme: "Thema" },
   { pageNumber: 7, theme: "Thema" },
+  { pageNumber: 8, theme: "Thema" },
+  { pageNumber: 9, theme: "Thema" },
+  { pageNumber: 10, theme: "Thema" },
+  { pageNumber: 11, theme: "Thema" },
   null,
 ];
 
@@ -384,7 +496,9 @@ export default function Flipbook() {
       case 2: return { left: pages[3].content, right: pages[4].content };
       case 3: return { left: pages[5].content, right: pages[6].content };
       case 4: return { left: pages[7].content, right: pages[8].content };
-      case 5: return { left: pages[9].content, right: null };
+      case 5: return { left: pages[9].content, right: pages[10].content };
+      case 6: return { left: pages[11].content, right: pages[12].content };
+      case 7: return { left: pages[13].content, right: null };
       default: return { left: null, right: null };
     }
   };
@@ -396,7 +510,16 @@ export default function Flipbook() {
   const mobileIsCover = mobilePageIndex === 0;
   const mobileIsBackCover = mobilePageIndex === totalPages;
 
-  const spreadLabels = ["Cover", "Inside / 1", "2 / 3", "4 / 5", "6 / 7", "Rear"];
+  const spreadLabels = [
+    "Cover",
+    "Inside / 1",
+    "2 / 3",
+    "4 / 5",
+    "6 / 7",
+    "8 / 9",
+    "10 / 11",
+    "Rear"
+  ];
 
   /* Tekstblokken voor spread 4/5 — links en rechts apart doorgeven */
   const spread45LeftContent = (
