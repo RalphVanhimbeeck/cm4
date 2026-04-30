@@ -92,7 +92,6 @@ const pages: Page[] = [
     ),
   },
   // 5 — Page 4  (LINKERPAGINA spread 3: "4/5")
-  // Op desktop enkel de 2 linker tekstblokken — foto en rechtertekst op spread-niveau
   {
     id: "page-4",
     content: (
@@ -115,7 +114,6 @@ const pages: Page[] = [
     ),
   },
   // 6 — Page 5  (RECHTERPAGINA spread 3: "4/5")
-  // Op desktop enkel de 2 rechter tekstblokken — foto en linkertekst op spread-niveau
   {
     id: "page-5",
     content: (
@@ -142,7 +140,7 @@ const pages: Page[] = [
     id: "page-6",
     content: (
       <div className="flex flex-col w-full h-full gap-3">
-        
+
         {/* Boven */}
         <div className="flex flex-1 gap-3">
           <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
@@ -150,25 +148,25 @@ const pages: Page[] = [
           </div>
           <div className="flex-1 bg-gray-100 rounded p-3">
             <p className="text-xs text-gray-500 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
-</div>
+          </div>
         </div>
-  
+
         {/* Onder */}
         <div className="flex flex-1 gap-3">
-        <div className="flex-1 bg-gray-100 rounded p-3">
-          <p className="text-xs text-gray-500 leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
+          <div className="flex-1 bg-gray-100 rounded p-3">
+            <p className="text-xs text-gray-500 leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
           <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
             Foto
           </div>
         </div>
-  
+
       </div>
     ),
   },
@@ -177,7 +175,7 @@ const pages: Page[] = [
     id: "page-7",
     content: (
       <div className="flex flex-col w-full h-full gap-3">
-  
+
         {/* Boven */}
         <div className="flex gap-3 flex-[1]">
           <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
@@ -185,149 +183,163 @@ const pages: Page[] = [
           </div>
           <div className="flex-1 bg-gray-100 rounded p-3">
             <p className="text-xs text-gray-500 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
           </div>
         </div>
-  
+
         {/* Midden (gesplitst: tekst + foto) */}
         <div className="flex gap-3 flex-[1.5]">
-        <div className="flex-1 bg-gray-100 rounded p-3">
-          <p className="text-xs text-gray-500 leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-        
+          <div className="flex-1 bg-gray-100 rounded p-3">
+            <p className="text-xs text-gray-500 leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
           <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
             Foto
           </div>
         </div>
-  
+
         {/* Onder */}
         <div className="flex gap-3 flex-[1.5]">
           <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
             Foto
           </div>
           <div className="flex-1 bg-gray-100 rounded p-3">
-          <p className="text-xs text-gray-500 leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
+            <p className="text-xs text-gray-500 leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
         </div>
-        </div>
-  
+
       </div>
     ),
   },
 
-  // 🔥 9 — Page 8 (LINKS - nieuwe spread)
-{
-  id: "page-8",
-  content: (
-    <div className="flex flex-col w-full h-full gap-3">
-      
-      <div className="flex gap-3 flex-1">
-        <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-          Foto
+  // 9 — Page 8 (LINKS - spread 8/9) — volledig foto's
+  {
+    id: "page-8",
+    content: (
+      <div className="flex flex-col w-full h-full gap-3">
+
+        {/* Rij 1: grote foto links, 2 kleine rechts gestapeld */}
+        <div className="flex gap-3 flex-[1.5]">
+          <div className="flex-[2] bg-gray-200 rounded flex items-center justify-center">
+            Foto
+          </div>
+          <div className="flex-1 flex flex-col gap-3">
+            <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+              Foto
+            </div>
+            <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+              Foto
+            </div>
+          </div>
         </div>
+
+        {/* Rij 2: 2 foto's naast elkaar */}
+        <div className="flex gap-3 flex-1">
+          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+            Foto
+          </div>
+          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+            Foto
+          </div>
+        </div>
+
+        {/* Rij 3: 2 foto's naast elkaar */}
+        <div className="flex gap-3 flex-1">
+          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+            Foto
+          </div>
+          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+            Foto
+          </div>
+        </div>
+
+      </div>
+    ),
+  },
+
+  // 10 — Page 9 (RECHTS - spread 8/9) — twee tekstblokken
+  {
+    id: "page-9",
+    content: (
+      <div className="flex flex-col w-full h-full gap-3">
+
+        <div className="flex-1 bg-gray-100 rounded p-3 flex items-center justify-center">
+          <p className="text-xs text-gray-500 leading-relaxed">
+            Tekst
+          </p>
+        </div>
+
+        <div className="flex-1 bg-gray-100 rounded p-3 flex items-center justify-center">
+          <p className="text-xs text-gray-500 leading-relaxed">
+            Tekst
+          </p>
+        </div>
+
+      </div>
+    ),
+  },
+
+  // 11 — Page 10 (LINKS - volgende spread)
+  {
+    id: "page-10",
+    content: (
+      <div className="flex flex-col w-full h-full gap-3">
+
+        <div className="flex gap-3 flex-1">
+          <div className="flex-1 bg-gray-100 rounded p-3">
+            <p className="text-xs text-gray-500">Lorem ipsum</p>
+          </div>
+          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+            Foto
+          </div>
+        </div>
+
+        <div className="flex gap-3 flex-1">
+          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+            Foto
+          </div>
+          <div className="flex-1 bg-gray-100 rounded p-3">
+            <p className="text-xs text-gray-500">Lorem ipsum</p>
+          </div>
+        </div>
+
+      </div>
+    ),
+  },
+
+  // 12 — Page 11 (RECHTS)
+  {
+    id: "page-11",
+    content: (
+      <div className="flex flex-col w-full h-full gap-3">
+
         <div className="flex-1 bg-gray-100 rounded p-3">
           <p className="text-xs text-gray-500 leading-relaxed">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
         </div>
-      </div>
 
-      <div className="flex-1 bg-gray-100 rounded p-3">
-        <p className="text-xs text-gray-500 leading-relaxed">
-          Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore.
-        </p>
-      </div>
-
-    </div>
-  ),
-},
-
-// 🔥 10 — Page 9 (RECHTS)
-{
-  id: "page-9",
-  content: (
-    <div className="flex flex-row w-full h-full gap-3">
-      
-      <div className="flex-[2] bg-gray-100 rounded p-3">
-        <p className="text-sm text-gray-500 leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-          Ut enim ad minim veniam quis nostrud exercitation.
-        </p>
-      </div>
-
-      <div className="flex-1 flex flex-col gap-3">
-        <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-          Foto
+        <div className="flex gap-3 flex-1">
+          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+            Foto
+          </div>
+          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+            Foto
+          </div>
         </div>
-        <div className="flex-1 bg-gray-100 rounded p-3">
-          <p className="text-xs text-gray-500">
-            Lorem ipsum
-          </p>
-        </div>
+
       </div>
+    ),
+  },
 
-    </div>
-  ),
-},
-
-// 🔥 11 — Page 10 (LINKS - volgende spread)
-{
-  id: "page-10",
-  content: (
-    <div className="grid grid-cols-2 gap-3 w-full h-full">
-      
-      <div className="bg-gray-100 rounded p-3">
-        <p className="text-xs text-gray-500">Lorem ipsum</p>
-      </div>
-
-      <div className="bg-gray-200 rounded flex items-center justify-center">
-        Foto
-      </div>
-
-      <div className="bg-gray-200 rounded flex items-center justify-center">
-        Foto
-      </div>
-
-      <div className="bg-gray-100 rounded p-3">
-        <p className="text-xs text-gray-500">Lorem ipsum</p>
-      </div>
-
-    </div>
-  ),
-},
-
-// 🔥 12 — Page 11 (RECHTS)
-{
-  id: "page-11",
-  content: (
-    <div className="flex flex-col w-full h-full gap-3">
-
-      <div className="flex-1 bg-gray-100 rounded p-3">
-        <p className="text-xs text-gray-500 leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </p>
-      </div>
-
-      <div className="flex gap-3 flex-1">
-        <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-          Foto
-        </div>
-        <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-          Foto
-        </div>
-      </div>
-
-    </div>
-  ),
-},
-  // 9 — BACK COVER
+  // 13 — BACK COVER
   {
     id: "back-cover",
     content: <h1 className="text-2xl">Back Cover</h1>,
