@@ -1,16 +1,16 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* belangrijk */
+  justify-content: center; 
   align-items: center;
-  height: 100vh; /*geen scroll meer */
+  height: 100vh;
   overflow: hidden;
 }
 
 .book {
   width: 80vw;
   max-width: 1000px;
-  height: 60vh; /*ruimte voor buttons */
+  height: 60vh; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,4 +44,3 @@
 .controls {
   margin-top: 20px;
 }
-

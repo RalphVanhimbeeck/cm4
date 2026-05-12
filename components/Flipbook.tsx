@@ -33,9 +33,17 @@ const pages: Page[] = [
   {
     id: "page-1",
     content: (
-      <div>
-        <h2 className="text-2xl font-semibold">Page 1</h2>
-        <p className="text-sm sm:text-base">Simple text content layout</p>
+      <div className="flex w-full h-full items-center justify-center">
+        <div className="bg-gray-100 rounded p-4 w-3/4">
+          <p className="text-xs text-gray-500 leading-relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+            deserunt mollit anim id est laborum.
+          </p>
+        </div>
       </div>
     ),
   },
@@ -44,15 +52,16 @@ const pages: Page[] = [
     id: "page-2",
     content: (
       <div className="flex flex-row w-full h-full gap-3">
-        <div className="flex-1 bg-gray-200 rounded overflow-hidden flex items-center justify-center">
-          <span className="text-gray-400 text-sm">Foto</span>
+        <div className="flex-1 rounded overflow-hidden">
+          <img src="/sounddesign1.jpeg" alt="Sound Design 1" className="w-full h-full object-cover" />
         </div>
         <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
           <p className="text-xs text-gray-500 leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+          Bij Machine Hallucinations speelt sound design een veel grotere rol dan enkel achtergrondgeluid. 
+          Het geluid vormt samen met de visuals één geheel en bepaalt sterk hoe de bezoeker de installatie ervaart. 
+          Refik Anadol gebruikt geen klassieke muziek, maar werkt met diepe ambient geluiden, lage frequenties en digitale texturen die constant veranderen. 
+          Daardoor voelt de ruimte bijna levend aan en word je volledig ondergedompeld in de installatie.
+          De soundscape beweegt mee met de projecties en versterkt de transformaties van de beelden. 
           </p>
         </div>
       </div>
@@ -66,25 +75,25 @@ const pages: Page[] = [
         <div className="flex flex-1 gap-3">
           <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
             <p className="text-xs text-gray-500 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim
-              ad minim veniam, quis nostrud exercitation ullamco laboris.
+            Door het gebruik van surround sound lijkt het alsof de ruimte zelf reageert op wat er visueel gebeurt. 
+            Hierdoor kijkt de bezoeker niet alleen naar een projectie, maar bevindt hij zich midden in een audiovisueel systeem waarin beeld en geluid voortdurend met elkaar verbonden zijn.
             </p>
           </div>
-          <div className="flex-1 bg-gray-200 rounded overflow-hidden flex items-center justify-center">
-            <span className="text-gray-400 text-sm">Foto</span>
+          <div className="flex-1 rounded overflow-hidden">
+            <img src="/sounddesign2.jpeg" alt="Sound Design 2" className="w-full h-full object-cover" />
           </div>
         </div>
         <div className="flex flex-1 gap-3">
           <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
             <p className="text-xs text-gray-500 leading-relaxed">
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-              officia deserunt mollit anim id est laborum consectetur.
+              Wat deze installatie interessant maakt, is dat het geluid geen klassiek verhaal vertelt zoals in film.
+              Er is geen duidelijke melodie of spanningsopbouw, maar eerder een constante stroom van geluid die de ervaring hypnotisch en dromerig maakt. 
             </p>
           </div>
           <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
             <p className="text-xs text-gray-500 leading-relaxed">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur excepteur sint occaecat.
+            Het sound design zorgt ervoor dat de AI-gegenereerde beelden minder technisch aanvoelen en meer emotie oproepen. 
+            Hierdoor wordt geluid niet alleen decoratie, maar een echte interface tussen mens, ruimte en data.
             </p>
           </div>
         </div>
@@ -98,9 +107,8 @@ const pages: Page[] = [
       <div className="flex flex-col w-full h-full gap-3">
         <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
           <p className="text-xs text-gray-500 leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-            enim ad minim veniam quis nostrud exercitation ullamco.
+          Bij Machine Hallucinations ontstaan de visuals volledig vanuit data en artificiële intelligentie. 
+          In plaats van beelden manueel te ontwerpen zoals bij klassieke motion graphics, gebruikt Refik Anadol enorme datasets die door AI geanalyseerd worden. 
           </p>
         </div>
         <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
@@ -143,8 +151,8 @@ const pages: Page[] = [
 
         {/* Boven */}
         <div className="flex flex-1 gap-3">
-          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-            Foto
+          <div className="flex-1 rounded overflow-hidden">
+            <img src="/GrafiekInTijd&Ruimte1.jpeg" alt="Grafiek in tijd en ruimte 1" className="w-full h-full object-cover" />
           </div>
           <div className="flex-1 bg-gray-100 rounded p-3">
             <p className="text-xs text-gray-500 leading-relaxed">
@@ -162,8 +170,8 @@ const pages: Page[] = [
               Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
           </div>
-          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-            Foto
+          <div className="flex-1 rounded overflow-hidden">
+            <img src="/GrafiekInTijd&Ruimte2.jpeg" alt="Grafiek in tijd en ruimte 2" className="w-full h-full object-cover" />
           </div>
         </div>
 
@@ -178,8 +186,8 @@ const pages: Page[] = [
 
         {/* Boven */}
         <div className="flex gap-3 flex-[1]">
-          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-            Foto
+          <div className="flex-1 rounded overflow-hidden">
+            <img src="/GrafiekInTijd&Ruimte3.jpeg" alt="Grafiek in tijd en ruimte 3" className="w-full h-full object-cover" />
           </div>
           <div className="flex-1 bg-gray-100 rounded p-3">
             <p className="text-xs text-gray-500 leading-relaxed">
@@ -197,15 +205,15 @@ const pages: Page[] = [
               Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
           </div>
-          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-            Foto
+          <div className="flex-1 rounded overflow-hidden">
+            <img src="/GrafiekInTijd&Ruimte4.jpeg" alt="Grafiek in tijd en ruimte 4" className="w-full h-full object-cover" />
           </div>
         </div>
 
         {/* Onder */}
         <div className="flex gap-3 flex-[1.5]">
-          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-            Foto
+          <div className="flex-1 rounded overflow-hidden">
+            <img src="/GrafiekInTijd&Ruimte5.jpeg" alt="Grafiek in tijd en ruimte 5" className="w-full h-full object-cover" />
           </div>
           <div className="flex-1 bg-gray-100 rounded p-3">
             <p className="text-xs text-gray-500 leading-relaxed">
@@ -225,9 +233,54 @@ const pages: Page[] = [
     content: (
       <div className="flex flex-col w-full h-full gap-3">
 
-        {/* Rij 1: grote foto links, 2 kleine rechts gestapeld */}
-        <div className="flex gap-3 flex-[1.5]">
-          <div className="flex-[2] bg-gray-200 rounded flex items-center justify-center">
+        {/* Rij 1+2 gecombineerd: links kolom (grote foto + brede foto), rechts lange foto */}
+        <div className="flex gap-3 flex-[3]">
+          {/* Linkerkolom */}
+          <div className="flex-[2.2] flex flex-col gap-3">
+            {/* Boven: grote foto links + 2 kleine gestapeld */}
+            <div className="flex gap-3 flex-[2]">
+              <div className="flex-[1.2] bg-gray-200 rounded flex items-center justify-center">
+                Foto
+              </div>
+              <div className="flex-1 flex flex-col gap-3">
+                <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+                  Foto
+                </div>
+                <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+                  Foto
+                </div>
+              </div>
+            </div>
+            {/* Onder: brede foto */}
+            <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+              Foto
+            </div>
+          </div>
+          {/* Rechterkolom: lange foto die doorloopt */}
+          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+            Foto
+          </div>
+        </div>
+
+        {/* Rij 3: 4 kleine foto's naast elkaar */}
+        <div className="flex gap-3 flex-1">
+          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+            Foto
+          </div>
+          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+            Foto
+          </div>
+          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+            Foto
+          </div>
+          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+            Foto
+          </div>
+        </div>
+
+        {/* Rij 4: grote foto links + rechts 2 foto's gestapeld */}
+        <div className="flex gap-3 flex-[2]">
+          <div className="flex-[1.5] bg-gray-200 rounded flex items-center justify-center">
             Foto
           </div>
           <div className="flex-1 flex flex-col gap-3">
@@ -240,45 +293,34 @@ const pages: Page[] = [
           </div>
         </div>
 
-        {/* Rij 2: 2 foto's naast elkaar */}
-        <div className="flex gap-3 flex-1">
-          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-            Foto
-          </div>
-          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-            Foto
-          </div>
-        </div>
-
-        {/* Rij 3: 2 foto's naast elkaar */}
-        <div className="flex gap-3 flex-1">
-          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-            Foto
-          </div>
-          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-            Foto
-          </div>
-        </div>
-
       </div>
     ),
   },
 
-  // 10 — Page 9 (RECHTS - spread 8/9) — twee tekstblokken
+  // 10 — Page 9 (RECHTS - spread 8/9) — twee tekstblokken naast elkaar
   {
     id: "page-9",
     content: (
-      <div className="flex flex-col w-full h-full gap-3">
+      <div className="flex flex-row w-full h-full gap-3">
 
-        <div className="flex-1 bg-gray-100 rounded p-3 flex items-center justify-center">
+        <div className="flex-1 bg-gray-100 rounded p-3 overflow-hidden">
           <p className="text-xs text-gray-500 leading-relaxed">
-            Tekst
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+            deserunt mollit anim id est laborum.
           </p>
         </div>
 
-        <div className="flex-1 bg-gray-100 rounded p-3 flex items-center justify-center">
+        <div className="flex-1 bg-gray-100 rounded p-3 overflow-hidden">
           <p className="text-xs text-gray-500 leading-relaxed">
-            Tekst
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+            laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi
+            architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
+            sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+            sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
           </p>
         </div>
 
@@ -286,55 +328,45 @@ const pages: Page[] = [
     ),
   },
 
-  // 11 — Page 10 (LINKS - volgende spread)
+  // 11 — Page 10 (LINKS - spread 10/11) — twee tekstblokken naast elkaar
   {
     id: "page-10",
     content: (
-      <div className="flex flex-col w-full h-full gap-3">
+      <div className="flex flex-row w-full h-full gap-3">
 
-        <div className="flex gap-3 flex-1">
-          <div className="flex-1 bg-gray-100 rounded p-3">
-            <p className="text-xs text-gray-500">Lorem ipsum</p>
-          </div>
-          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-            Foto
-          </div>
+        <div className="flex-1 bg-gray-100 rounded p-3 overflow-hidden">
+          <p className="text-xs text-gray-500 leading-relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+            deserunt mollit anim id est laborum.
+          </p>
         </div>
 
-        <div className="flex gap-3 flex-1">
-          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-            Foto
-          </div>
-          <div className="flex-1 bg-gray-100 rounded p-3">
-            <p className="text-xs text-gray-500">Lorem ipsum</p>
-          </div>
+        <div className="flex-1 bg-gray-100 rounded p-3 overflow-hidden">
+          <p className="text-xs text-gray-500 leading-relaxed">
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+            laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi
+            architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
+            sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+            sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+          </p>
         </div>
 
       </div>
     ),
   },
 
-  // 12 — Page 11 (RECHTS)
+  // 12 — Page 11 (RECHTS - spread 10/11) — grote foto bijna volledige pagina
   {
     id: "page-11",
     content: (
-      <div className="flex flex-col w-full h-full gap-3">
-
-        <div className="flex-1 bg-gray-100 rounded p-3">
-          <p className="text-xs text-gray-500 leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </p>
+      <div className="flex w-full h-full">
+        <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
+          Foto
         </div>
-
-        <div className="flex gap-3 flex-1">
-          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-            Foto
-          </div>
-          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-            Foto
-          </div>
-        </div>
-
       </div>
     ),
   },
@@ -342,7 +374,11 @@ const pages: Page[] = [
   // 13 — BACK COVER
   {
     id: "back-cover",
-    content: <h1 className="text-2xl">Back Cover</h1>,
+    content: (
+      <div className="absolute inset-0 bg-[#1b2a4a] rounded flex items-end justify-center pb-3">
+        <span className="text-white text-[8px] tracking-widest lowercase opacity-70">Made by RVH</span>
+      </div>
+    ),
   },
 ];
 
@@ -359,7 +395,7 @@ type SpreadMeta = {
 
 const spreadMeta: SpreadMeta[] = [
   { left: null, right: null },
-  { left: null, right: { pageNumber: 1, theme: "Thema" } },
+  { left: null, right: { pageNumber: 1, theme: "Introduction" } },
   { left: { pageNumber: 2, theme: "Sound Design" }, right: { pageNumber: 3, theme: "Sound Design" } },
   { left: { pageNumber: 4, theme: "Data driven grafische objecten" }, right: { pageNumber: 5, theme: "Data driven grafische objecten" } },
   { left: { pageNumber: 6, theme: "Grafiek in tijd en ruimte" }, right: { pageNumber: 7, theme: "Grafiek in tijd en ruimte" } },
@@ -399,9 +435,9 @@ function PageLabel({
   const isRight = side === "right";
   return (
     <div
-      className={`absolute bottom-3 ${
-        isRight ? "right-4 text-right" : "left-4 text-left"
-      } text-[11px] tracking-widest uppercase text-gray-400 select-none`}
+      className={`absolute bottom-1 ${
+        isRight ? "right-3 text-right" : "left-3 text-left"
+      } text-[8px] tracking-widest uppercase text-gray-400 select-none`}
     >
       {isRight
         ? `${meta.theme} | ${meta.pageNumber}`
@@ -426,18 +462,25 @@ function CrossSpread({
   metaLeft: { pageNumber: number; theme: string } | null;
   metaRight: { pageNumber: number; theme: string } | null;
 }) {
+  // background-size: 200%+ zodat elke pagina slechts de helft van de foto toont
+  const photoStyle = (side: "left" | "right"): React.CSSProperties => ({
+    backgroundImage: "url('/Datadrivengrafischeobjecten.jpeg')",
+    backgroundSize: "calc(200% + 16px) 100%",
+    backgroundPosition: side === "left" ? "left center" : "right center",
+    backgroundRepeat: "no-repeat",
+  });
+
   return (
     <div className="hidden md:flex gap-4 w-full h-full justify-center">
+
       {/* Linkerpagina */}
       <div
         className="relative h-full border rounded shadow bg-white overflow-hidden flex flex-col"
         style={{ aspectRatio: "3/4" }}
       >
-        {/* Foto — bovenste helft, loopt door via rechterpagina */}
-        <div className="flex-[3] bg-gray-200 flex items-center justify-center">
-          {/* lege placeholder, visueel doorlopend via rechterpagina */}
-        </div>
-        {/* Tekst — onderste helft, linker 2 blokken */}
+        {/* Foto — linker helft van het doorlopende beeld */}
+        <div className="flex-[3]" style={photoStyle("left")} />
+        {/* Tekst onderaan */}
         <div className="flex-[2] flex flex-row gap-3 p-4 pt-3">
           {leftContent}
         </div>
@@ -449,16 +492,15 @@ function CrossSpread({
         className="relative h-full border rounded shadow bg-white overflow-hidden flex flex-col"
         style={{ aspectRatio: "3/4" }}
       >
-        {/* Foto — bovenste helft, doorlopend van linkerpagina */}
-        <div className="flex-[3] bg-gray-200 flex items-center justify-center">
-          <span className="text-gray-400 text-sm">Foto</span>
-        </div>
-        {/* Tekst — onderste helft, rechter 2 blokken */}
+        {/* Foto — rechter helft van het doorlopende beeld */}
+        <div className="flex-[3]" style={photoStyle("right")} />
+        {/* Tekst onderaan */}
         <div className="flex-[2] flex flex-row gap-3 p-4 pt-3">
           {rightContent}
         </div>
         <PageLabel side="right" meta={metaRight} />
       </div>
+
     </div>
   );
 }
@@ -466,14 +508,34 @@ function CrossSpread({
 /* =========================
    COMPONENT
 ========================= */
-export default function Flipbook() {
-  const [spreadIndex, setSpreadIndex] = useState<number>(0);
+export default function Flipbook({
+  externalSpreadIndex,
+  onSpreadChange,
+}: {
+  externalSpreadIndex?: number;
+  onSpreadChange?: (index: number) => void;
+}) {
+  const [spreadIndex, setSpreadIndex] = useState<number>(
+    externalSpreadIndex ?? 0
+  );
   const [mobilePageIndex, setMobilePageIndex] = useState<number>(0);
 
   const touchStartX = useRef<number | null>(null);
 
-  const nextSpread = () => setSpreadIndex((s) => Math.min(s + 1, totalSpreads));
-  const prevSpread = () => setSpreadIndex((s) => Math.max(s - 1, 0));
+  // Sync met externe navigatie (vanuit navbar)
+  useEffect(() => {
+    if (externalSpreadIndex !== undefined && externalSpreadIndex !== spreadIndex) {
+      setSpreadIndex(externalSpreadIndex);
+    }
+  }, [externalSpreadIndex]);
+
+  const updateSpread = (index: number) => {
+    setSpreadIndex(index);
+    onSpreadChange?.(index);
+  };
+
+  const nextSpread = () => updateSpread(Math.min(spreadIndex + 1, totalSpreads));
+  const prevSpread = () => updateSpread(Math.max(spreadIndex - 1, 0));
 
   const nextPage = () => setMobilePageIndex((p) => Math.min(p + 1, totalPages));
   const prevPage = () => setMobilePageIndex((p) => Math.max(p - 1, 0));
@@ -537,15 +599,15 @@ export default function Flipbook() {
   const spread45LeftContent = (
     <>
       <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-2 overflow-hidden">
-        <p className="text-xs text-gray-500 leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        <p className="text-[10px] text-gray-500 leading-relaxed">
+          Bij Machine Hallucinations ontstaan de visuals volledig vanuit data en artificiële intelligentie.
+          In plaats van beelden manueel te ontwerpen zoals bij klassieke motion graphics, gebruikt Refik Anadol enorme datasets die door AI geanalyseerd worden.
         </p>
       </div>
       <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-2 overflow-hidden">
-        <p className="text-xs text-gray-500 leading-relaxed">
-          Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur excepteur sint.
+        <p className="text-[10px] text-gray-500 leading-relaxed">
+          Voor Unsupervised gebruikte hij de digitale collectie van het MoMA, waarbij de machine verbanden zocht tussen kleuren, vormen, composities en stijlen.
+          De data wordt zo omgezet in bewegende en abstracte visuals die constant veranderen.
         </p>
       </div>
     </>
@@ -554,15 +616,16 @@ export default function Flipbook() {
   const spread45RightContent = (
     <>
       <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-2 overflow-hidden">
-        <p className="text-xs text-gray-500 leading-relaxed">
-          Sunt in culpa qui officia deserunt mollit anim id est laborum
-          consectetur adipiscing elit ut perspiciatis unde omnis.
+        <p className="text-[10px] text-gray-500 leading-relaxed">
+          De grafische objecten voelen daardoor niet statisch aan, maar eerder als levende systemen die blijven evolueren.
+          De visuals lijken op vloeistoffen, digitale sculpturen of neurale netwerken die zich in realtime ontwikkelen.
+          Wat interessant is, is dat Refik Anadol data ziet als een nieuw artistiek materiaal.
         </p>
       </div>
       <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-2 overflow-hidden">
-        <p className="text-xs text-gray-500 leading-relaxed">
-          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-          aut fugit sed quia consequuntur magni dolores eos.
+        <p className="text-[10px] text-gray-500 leading-relaxed">
+          Hierdoor verschuift grafisch ontwerp van iets vast en gecontroleerd naar een generatief proces waarin algoritmes mee bepalen hoe de beelden eruitzien.
+          Dat roept ook vragen op over creativiteit en auteurschap: is de kunstenaar nog de maker, of speelt de AI daar even goed een rol in?
         </p>
       </div>
     </>
@@ -588,7 +651,7 @@ export default function Flipbook() {
         ) : (
           <div className="hidden md:flex gap-4 w-full h-full justify-center">
             {!isCover && (
-              <div className="relative aspect-[3/4] h-full border rounded shadow bg-white flex items-center justify-center p-6">
+              <div className="relative aspect-[3/4] h-full border rounded shadow bg-white flex items-center justify-center p-6 pb-5">
                 {left}
                 <PageLabel side="left" meta={currentMeta.left} />
               </div>
@@ -596,7 +659,7 @@ export default function Flipbook() {
             {!isBackCover && (
               <div
                 className={`relative aspect-[3/4] h-full border rounded shadow bg-white flex items-center justify-center overflow-hidden ${
-                  isCover ? "p-0" : "p-6"
+                  isCover ? "p-0" : "p-6 pb-5"
                 }`}
               >
                 {right}
@@ -655,7 +718,7 @@ export default function Flipbook() {
         {spreadLabels.map((label, i) => (
           <button
             key={i}
-            onClick={() => setSpreadIndex(i)}
+            onClick={() => updateSpread(i)}
             className={`hidden md:block px-3 py-2 border rounded text-xs ${
               spreadIndex === i ? "bg-black text-white" : ""
             }`}

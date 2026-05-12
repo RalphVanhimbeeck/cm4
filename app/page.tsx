@@ -1,9 +1,22 @@
-import Flipbook from "../components/Flipbook";
+"use client"
 
-export default function Home() {
+import { useState } from "react"
+import GlobalNavbar from "@/components/GlobalNavbar"
+import Flipbook from "@/components/Flipbook"
+
+export default function Page() {
+  const [spreadIndex, setSpreadIndex] = useState(0)
+
   return (
-    <main>
-      <Flipbook />
-    </main>
-  );
+    <>
+      <GlobalNavbar
+        onNavigate={setSpreadIndex}
+        currentSpreadIndex={spreadIndex}
+      />
+      <Flipbook
+        externalSpreadIndex={spreadIndex}
+        onSpreadChange={setSpreadIndex}
+      />
+    </>
+  )
 }
