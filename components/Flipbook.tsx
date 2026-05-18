@@ -156,8 +156,8 @@ const pages: Page[] = [
           </div>
           <div className="flex-1 bg-gray-100 rounded p-3">
             <p className="text-xs text-gray-500 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            De visuals van Machine Hallucinations ontstaan volledig vanuit data en artificiële intelligentie. 
+            In plaats van beelden handmatig te ontwerpen, gebruikt Refik Anadol enorme datasets die door AI geanalyseerd worden.
             </p>
           </div>
         </div>
@@ -166,8 +166,8 @@ const pages: Page[] = [
         <div className="flex flex-1 gap-3">
           <div className="flex-1 bg-gray-100 rounded p-3">
             <p className="text-xs text-gray-500 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Voor Unsupervised gebruikte hij de digitale collectie van het MoMA, waarbij de machine verbanden zocht tussen kleuren, vormen, composities en stijlen. 
+            De data wordt hierdoor omgezet in abstracte en bewegende visuals die constant veranderen en nooit exact hetzelfde zijn.
             </p>
           </div>
           <div className="flex-1 rounded overflow-hidden">
@@ -191,8 +191,8 @@ const pages: Page[] = [
           </div>
           <div className="flex-1 bg-gray-100 rounded p-3">
             <p className="text-xs text-gray-500 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            De grafische objecten voelen daardoor meer aan als levende systemen dan als gewone illustraties. 
+            De visuals lijken op vloeistoffen, digitale sculpturen of neurale netwerken die zich in realtime ontwikkelen.
             </p>
           </div>
         </div>
@@ -201,8 +201,9 @@ const pages: Page[] = [
         <div className="flex gap-3 flex-[1.5]">
           <div className="flex-1 bg-gray-100 rounded p-3">
             <p className="text-xs text-gray-500 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Dit maakt het project interessant binnen hedendaags grafisch ontwerp, 
+            omdat de ontwerper niet langer elk detail bepaalt, 
+            maar eerder een systeem creëert waarin algoritmes mee de beelden genereren.
             </p>
           </div>
           <div className="flex-1 rounded overflow-hidden">
@@ -217,8 +218,8 @@ const pages: Page[] = [
           </div>
           <div className="flex-1 bg-gray-100 rounded p-3">
             <p className="text-xs text-gray-500 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Daardoor stelt de installatie ook vragen over creativiteit en auteurschap: is de kunstenaar nog de maker, 
+            of speelt de AI daar even goed een rol in?
             </p>
           </div>
         </div>
@@ -304,23 +305,22 @@ const pages: Page[] = [
       <div className="flex flex-row w-full h-full gap-3">
 
         <div className="flex-1 bg-gray-100 rounded p-3 overflow-hidden">
-          <p className="text-xs text-gray-500 leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-            deserunt mollit anim id est laborum.
+          <p className="text-[11.5px] text-gray-500 leading-relaxed">
+          Hoewel Machine Hallucinations geen klassieke interactieve installatie is met knoppen of touchscreens, draait het project volledig rond de interactie tussen mens, ruimte en informatie. 
+          Refik Anadol zet grote hoeveelheden data om in een omgeving waarin bezoekers zich fysiek kunnen bewegen. 
+          Daardoor wordt informatie niet langer iets statisch of analytisch, maar een ervaarbare en bijna emotionele ervaring.
+          In plaats van data te vereenvoudigen zoals bij traditionele infographics of interfaces, worden complexe datasets hier net omgezet in abstracte en organische visuele systemen. 
+          De informatie wordt geen object meer om naar te kijken,
           </p>
         </div>
 
         <div className="flex-1 bg-gray-100 rounded p-3 overflow-hidden">
-          <p className="text-xs text-gray-500 leading-relaxed">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-            laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi
-            architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
-            sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-            sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+          <p className="text-[11.5px] text-gray-500 leading-relaxed">
+          maar een volledige atmosfeer waarin je als bezoeker terechtkomt. 
+          Hierdoor verschuift de ervaring van begrijpen naar beleven.
+          De installatie sluit aan bij het idee van post-digitale interfaces, waarbij de klassieke interface bijna volledig verdwijnt. 
+          Bezoekers gebruiken geen schermen of menu’s, maar interpreteren data via licht, geluid en beweging. 
+          Tegelijk herdefinieert het werk ook het idee van een archief: de MoMA-collectie wordt een dynamisch, levend systeem dat voortdurend nieuwe verbanden legt, waardoor de installatie vragen oproept over hoe we in de toekomst met digitale informatie en cultuur omgaan.
           </p>
         </div>
 
@@ -335,23 +335,22 @@ const pages: Page[] = [
       <div className="flex flex-row w-full h-full gap-3">
 
         <div className="flex-1 bg-gray-100 rounded p-3 overflow-hidden">
-          <p className="text-xs text-gray-500 leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-            deserunt mollit anim id est laborum.
+          <p className="text-[11.5px] text-gray-500 leading-relaxed">
+          Sequentie is een belangrijk onderdeel van de visuele structuur binnen Machine Hallucinations. 
+          De installatie bestaat uit een continue stroom van beelden die in elkaar overlopen zonder duidelijke onderbrekingen. 
+          In plaats van vaste scènes of een lineair verloop ontstaat er een eindeloze transformatie waarin elke visuele toestand automatisch overgaat in de volgende.
+          In tegenstelling tot klassieke motion graphics, waar alles vooraf wordt opgebouwd in een tijdlijn, worden deze sequenties hier gegenereerd door AI en algoritmes. 
+          Daardoor herhaalt de visuele stroom zich nooit exact op dezelfde manier.
           </p>
         </div>
 
         <div className="flex-1 bg-gray-100 rounded p-3 overflow-hidden">
-          <p className="text-xs text-gray-500 leading-relaxed">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-            laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi
-            architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
-            sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-            sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+          <p className="text-[11.5px] text-gray-500 leading-relaxed">
+          Het systeem voelt daardoor minder als een afgewerkt video-werk en meer als een proces dat voortdurend in beweging is en zichzelf blijft genereren.
+          De overgangen tussen de beelden spelen hierbij een grote rol. 
+          Vormen smelten samen, vervormen en evolueren op een vloeiende manier waardoor een bijna hypnotisch ritme ontstaat. 
+          Hierdoor krijgt het werk een organische kwaliteit en lijkt het alsof de machine zelf aan het denken of dromen is. 
+          Dit maakt het interessant binnen grafisch ontwerp, omdat de nadruk verschuift van een eindbeeld naar een systeem van regels en gedrag dat eindeloze variaties kan produceren.
           </p>
         </div>
 
@@ -365,7 +364,7 @@ const pages: Page[] = [
     content: (
       <div className="flex w-full h-full">
         <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-          Foto
+        <img src="public/SequentiëleGrafischeSystemen.jpeg" alt="Sequentiële Grafische Systemen" className="w-full h-full object-cover" />
         </div>
       </div>
     ),
