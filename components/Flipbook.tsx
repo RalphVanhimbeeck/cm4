@@ -13,17 +13,60 @@ const pages: Page[] = [
   {
     id: "cover",
     content: (
-      <div className="relative w-full h-full">
+      <div className="relative w-full h-full rounded overflow-hidden" style={{ background: "#050810" }}>
+
+        {/* Achtergrond foto */}
         <img
-          src="/cover-coding.png"
+          src="/InteractieveInformatieStructuren1.jpg"
           alt="Cover"
-          className="w-full h-full object-cover rounded"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ opacity: 0.6, mixBlendMode: "luminosity" }}
         />
-        <div className="absolute inset-0 flex items-start justify-start pt-8 pl-8">
-          <h1 className="text-5xl font-bold text-white drop-shadow-lg tracking-widest text-left">
-            CODE<br />MAGAZINE
-          </h1>
+
+        {/* Kleur overlay — blauwe gloed */}
+        <div className="absolute inset-0" style={{
+          background: "linear-gradient(135deg, rgba(0,80,255,0.35) 0%, rgba(180,0,255,0.2) 50%, rgba(0,0,0,0.7) 100%)"
+        }} />
+
+        {/* Onderaan donkere fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-1/2" style={{
+          background: "linear-gradient(to top, rgba(5,8,16,1) 0%, transparent 100%)"
+        }} />
+
+        {/* Bovenaan dunne lijn + editie */}
+        <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-5 pt-4">
+          <div style={{ width: "30%", height: "1px", background: "rgba(255,255,255,0.3)" }} />
+          <p style={{ fontFamily: "Georgia, serif", fontSize: "7px", color: "rgba(255,255,255,0.5)", letterSpacing: "0.3em" }}>
+            VOL. 01 — 2026
+          </p>
+          <div style={{ width: "30%", height: "1px", background: "rgba(255,255,255,0.3)" }} />
         </div>
+
+        {/* Titel */}
+        <div className="absolute bottom-0 left-0 right-0 px-5 pb-8">
+          <h1 style={{
+            fontFamily: "'Georgia', serif",
+            fontSize: "clamp(1.4rem, 5vw, 2.4rem)",
+            fontWeight: 400,
+            color: "white",
+            letterSpacing: "0.18em",
+            lineHeight: 1,
+            marginBottom: "6px",
+          }}>
+            HALLUCINATE
+          </h1>
+          <div style={{ width: "100%", height: "1px", background: "rgba(255,255,255,0.25)", marginBottom: "8px" }} />
+          <p style={{
+            fontFamily: "Georgia, serif",
+            fontSize: "7px",
+            color: "rgba(255,255,255,0.5)",
+            letterSpacing: "0.25em",
+            textTransform: "uppercase",
+          }}>
+            The art of artificial imagination — Refik Anadol
+          </p>
+        </div>
+
       </div>
     ),
   },
@@ -36,12 +79,11 @@ const pages: Page[] = [
       <div className="flex w-full h-full items-center justify-center">
         <div className="bg-gray-100 rounded p-4 w-3/4">
           <p className="text-xs text-gray-500 leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-            deserunt mollit anim id est laborum.
+            Machine Hallucinations is geen gewone tentoonstelling. Het is een ervaring die je binnentrekt in een wereld waar data niet langer een getal of grafiek is, maar iets wat je voelt, ziet en bijna kunt aanraken. Refik Anadol slaagt erin om het onzichtbare zichtbaar te maken — de enorme hoeveelheden informatie die onze wereld vormgeven, omgezet naar bewegende, ademende beelden die nooit twee keer hetzelfde zijn.
+            <br /><br />
+            In dit magazine verkennen we hoe zijn werk raakt aan grafisch ontwerp, sound design, data-visualisatie en cinematografie. Niet vanuit een technisch standpunt, maar vanuit een menselijk één: wat doet het met je als een machine begint te dromen? En wat betekent dat voor de manier waarop wij als ontwerpers naar ons vak kijken?
+            <br /><br />
+            Dit is geen handleiding. Het is een uitnodiging om anders te kijken.
           </p>
         </div>
       </div>
@@ -232,64 +274,64 @@ const pages: Page[] = [
   {
     id: "page-8",
     content: (
-      <div className="flex flex-col w-full h-full gap-3">
+      <div className="flex flex-col w-full h-full gap-2" style={{ minHeight: 0 }}>
 
         {/* Rij 1+2 gecombineerd: links kolom (grote foto + brede foto), rechts lange foto */}
-        <div className="flex gap-3 flex-[3]">
+        <div className="flex gap-2 min-h-0" style={{ flex: "2.5 2.5 0" }}>
           {/* Linkerkolom */}
-          <div className="flex-[2.2] flex flex-col gap-3">
+          <div className="flex flex-col gap-2 min-h-0" style={{ flex: "2.2 2.2 0" }}>
             {/* Boven: grote foto links + 2 kleine gestapeld */}
-            <div className="flex gap-3 flex-[2]">
-              <div className="flex-[1.2] bg-gray-200 rounded flex items-center justify-center">
-                Foto
+            <div className="flex gap-2 min-h-0" style={{ flex: "2 2 0" }}>
+              <div className="rounded overflow-hidden min-h-0" style={{ flex: "1.2 1.2 0" }}>
+                <img src="/InteractieveInformatieStructuren1.jpg" alt="Interactieve Informatie Structuren 1" className="w-full h-full object-cover" />
               </div>
-              <div className="flex-1 flex flex-col gap-3">
-                <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-                  Foto
+              <div className="flex flex-col gap-2 min-h-0" style={{ flex: "1 1 0" }}>
+                <div className="flex-1 rounded overflow-hidden min-h-0">
+                  <img src="/InteractieveInformatieStructuren2.jpg" alt="Interactieve Informatie Structuren 2" className="w-full h-full object-cover" />
                 </div>
-                <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-                  Foto
+                <div className="flex-1 rounded overflow-hidden min-h-0">
+                  <img src="/InteractieveInformatieStructuren3.jpg" alt="Interactieve Informatie Structuren 3" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
             {/* Onder: brede foto */}
-            <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-              Foto
+            <div className="flex-1 rounded overflow-hidden min-h-0">
+              <img src="/InteractieveInformatieStructuren4.jpg" alt="Interactieve Informatie Structuren 4" className="w-full h-full object-cover" />
             </div>
           </div>
           {/* Rechterkolom: lange foto die doorloopt */}
-          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-            Foto
+          <div className="flex-1 rounded overflow-hidden min-h-0">
+            <img src="/InteractieveInformatieStructuren5.jpg" alt="Interactieve Informatie Structuren 5" className="w-full h-full object-cover" />
           </div>
         </div>
 
         {/* Rij 3: 4 kleine foto's naast elkaar */}
-        <div className="flex gap-3 flex-1">
-          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-            Foto
+        <div className="flex gap-2 min-h-0" style={{ flex: "0.8 0.8 0" }}>
+          <div className="flex-1 rounded overflow-hidden min-h-0">
+            <img src="/InteractieveInformatieStructuren6.jpg" alt="Interactieve Informatie Structuren 6" className="w-full h-full object-cover" />
           </div>
-          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-            Foto
+          <div className="flex-1 rounded overflow-hidden min-h-0">
+            <img src="/InteractieveInformatieStructuren7.jpeg" alt="Interactieve Informatie Structuren 7" className="w-full h-full object-cover" />
           </div>
-          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-            Foto
+          <div className="flex-1 rounded overflow-hidden min-h-0">
+            <img src="/InteractieveInformatieStructuren8.jpg" alt="Interactieve Informatie Structuren 8" className="w-full h-full object-cover" />
           </div>
-          <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-            Foto
+          <div className="flex-1 rounded overflow-hidden min-h-0">
+            <img src="/InteractieveInformatieStructuren9.jpg" alt="Interactieve Informatie Structuren 9" className="w-full h-full object-cover" />
           </div>
         </div>
 
         {/* Rij 4: grote foto links + rechts 2 foto's gestapeld */}
-        <div className="flex gap-3 flex-[2]">
-          <div className="flex-[1.5] bg-gray-200 rounded flex items-center justify-center">
-            Foto
+        <div className="flex gap-2 min-h-0" style={{ flex: "1.5 1.5 0" }}>
+          <div className="rounded overflow-hidden min-h-0" style={{ flex: "1.5 1.5 0" }}>
+            <img src="/InteractieveInformatieStructuren10.webp" alt="Interactieve Informatie Structuren 10" className="w-full h-full object-cover" />
           </div>
-          <div className="flex-1 flex flex-col gap-3">
-            <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-              Foto
+          <div className="flex flex-col gap-2 flex-1 min-h-0">
+            <div className="flex-1 rounded overflow-hidden min-h-0">
+              <img src="/InteractieveInformatieStructuren11.jpeg" alt="Interactieve Informatie Structuren 11" className="w-full h-full object-cover" />
             </div>
-            <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-              Foto
+            <div className="flex-1 rounded overflow-hidden min-h-0">
+              <img src="/InteractieveInformatieStructuren12.jpg" alt="Interactieve Informatie Structuren 12" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -364,7 +406,7 @@ const pages: Page[] = [
     content: (
       <div className="flex w-full h-full">
         <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-        <img src="public/SequentiëleGrafischeSystemen.jpeg" alt="Sequentiële Grafische Systemen" className="w-full h-full object-cover" />
+        <img src="/2021_Refik-Anadol_Machine-Hallucinations.jpg.webp" alt="Sequentiële Grafische Systemen" className="w-full h-full object-cover" />
         </div>
       </div>
     ),
@@ -374,8 +416,29 @@ const pages: Page[] = [
   {
     id: "back-cover",
     content: (
-      <div className="absolute inset-0 bg-[#1b2a4a] rounded flex items-end justify-center pb-3">
-        <span className="text-white text-[8px] tracking-widest lowercase opacity-70">Made by RVH</span>
+      <div className="absolute inset-0 rounded overflow-hidden flex items-end justify-center pb-5" style={{ background: "#050810" }}>
+
+        {/* Achtergrond foto */}
+        <img
+          src="/InteractieveInformatieStructuren5.jpg"
+          alt="Back Cover"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ opacity: 0.3, mixBlendMode: "luminosity" }}
+        />
+
+        {/* Kleur overlay */}
+        <div className="absolute inset-0" style={{
+          background: "linear-gradient(135deg, rgba(0,80,255,0.35) 0%, rgba(180,0,255,0.2) 50%, rgba(0,0,0,0.7) 100%)"
+        }} />
+
+        {/* Onderaan donkere fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-1/2" style={{
+          background: "linear-gradient(to top, rgba(5,8,16,1) 0%, transparent 100%)"
+        }} />
+
+        {/* Made by RVH */}
+        <span className="relative z-10 text-white text-[8px] tracking-widest lowercase opacity-50">made by rvh</span>
+
       </div>
     ),
   },
