@@ -19,6 +19,7 @@ const pages: Page[] = [
         <img
           src="/InteractieveInformatieStructuren1.jpg"
           alt="Cover"
+          loading="lazy"
           className="absolute inset-0 w-full h-full object-cover"
           style={{ opacity: 0.6, mixBlendMode: "luminosity" }}
         />
@@ -95,7 +96,7 @@ const pages: Page[] = [
     content: (
       <div className="flex flex-row w-full h-full gap-3">
         <div className="flex-1 rounded overflow-hidden">
-          <img src="/sounddesign1.jpeg" alt="Sound Design 1" className="w-full h-full object-cover" />
+          <img src="/sounddesign1.jpeg" alt="Sound Design 1" loading="lazy" className="w-full h-full object-cover" />
         </div>
         <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
           <p className="text-xs text-gray-500 leading-relaxed">
@@ -122,7 +123,7 @@ const pages: Page[] = [
             </p>
           </div>
           <div className="flex-1 rounded overflow-hidden">
-            <img src="/sounddesign2.jpeg" alt="Sound Design 2" className="w-full h-full object-cover" />
+            <img src="/sounddesign2.jpeg" alt="Sound Design 2" loading="lazy" className="w-full h-full object-cover" />
           </div>
         </div>
         <div className="flex flex-1 gap-3">
@@ -194,7 +195,7 @@ const pages: Page[] = [
         {/* Boven */}
         <div className="flex flex-1 gap-3">
           <div className="flex-1 rounded overflow-hidden">
-            <img src="/GrafiekInTijd&Ruimte1.jpeg" alt="Grafiek in tijd en ruimte 1" className="w-full h-full object-cover" />
+            <img src="/GrafiekInTijd&Ruimte1.jpeg" alt="Grafiek in tijd en ruimte 1" loading="lazy" className="w-full h-full object-cover" />
           </div>
           <div className="flex-1 bg-gray-100 rounded p-3">
             <p className="text-xs text-gray-500 leading-relaxed">
@@ -213,7 +214,7 @@ const pages: Page[] = [
             </p>
           </div>
           <div className="flex-1 rounded overflow-hidden">
-            <img src="/GrafiekInTijd&Ruimte2.jpeg" alt="Grafiek in tijd en ruimte 2" className="w-full h-full object-cover" />
+            <img src="/GrafiekInTijd&Ruimte2.jpeg" alt="Grafiek in tijd en ruimte 2" loading="lazy" className="w-full h-full object-cover" />
           </div>
         </div>
 
@@ -229,7 +230,7 @@ const pages: Page[] = [
         {/* Boven */}
         <div className="flex gap-3 flex-[1]">
           <div className="flex-1 rounded overflow-hidden">
-            <img src="/GrafiekInTijd&Ruimte3.jpeg" alt="Grafiek in tijd en ruimte 3" className="w-full h-full object-cover" />
+            <img src="/GrafiekInTijd&Ruimte3.jpeg" alt="Grafiek in tijd en ruimte 3" loading="lazy" className="w-full h-full object-cover" />
           </div>
           <div className="flex-1 bg-gray-100 rounded p-3">
             <p className="text-xs text-gray-500 leading-relaxed">
@@ -249,14 +250,14 @@ const pages: Page[] = [
             </p>
           </div>
           <div className="flex-1 rounded overflow-hidden">
-            <img src="/GrafiekInTijd&Ruimte4.jpeg" alt="Grafiek in tijd en ruimte 4" className="w-full h-full object-cover" />
+            <img src="/GrafiekInTijd&Ruimte4.jpeg" alt="Grafiek in tijd en ruimte 4" loading="lazy" className="w-full h-full object-cover" />
           </div>
         </div>
 
         {/* Onder */}
         <div className="flex gap-3 flex-[1.5]">
           <div className="flex-1 rounded overflow-hidden">
-            <img src="/GrafiekInTijd&Ruimte5.jpeg" alt="Grafiek in tijd en ruimte 5" className="w-full h-full object-cover" />
+            <img src="/GrafiekInTijd&Ruimte5.jpeg" alt="Grafiek in tijd en ruimte 5" loading="lazy" className="w-full h-full object-cover" />
           </div>
           <div className="flex-1 bg-gray-100 rounded p-3">
             <p className="text-xs text-gray-500 leading-relaxed">
@@ -283,55 +284,55 @@ const pages: Page[] = [
             {/* Boven: grote foto links + 2 kleine gestapeld */}
             <div className="flex gap-2 min-h-0" style={{ flex: "2 2 0" }}>
               <div className="rounded overflow-hidden min-h-0" style={{ flex: "1.2 1.2 0" }}>
-                <img src="/InteractieveInformatieStructuren1.jpg" alt="Interactieve Informatie Structuren 1" className="w-full h-full object-cover" />
+                <img src="/InteractieveInformatieStructuren1.jpg" alt="Interactieve Informatie Structuren 1" loading="lazy" className="w-full h-full object-cover" />
               </div>
               <div className="flex flex-col gap-2 min-h-0" style={{ flex: "1 1 0" }}>
                 <div className="flex-1 rounded overflow-hidden min-h-0">
-                  <img src="/InteractieveInformatieStructuren2.jpg" alt="Interactieve Informatie Structuren 2" className="w-full h-full object-cover" />
+                  <img src="/InteractieveInformatieStructuren2.jpg" alt="Interactieve Informatie Structuren 2" loading="lazy" className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1 rounded overflow-hidden min-h-0">
-                  <img src="/InteractieveInformatieStructuren3.jpg" alt="Interactieve Informatie Structuren 3" className="w-full h-full object-cover" />
+                  <img src="/InteractieveInformatieStructuren3.jpg" alt="Interactieve Informatie Structuren 3" loading="lazy" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
             {/* Onder: brede foto */}
             <div className="flex-1 rounded overflow-hidden min-h-0">
-              <img src="/InteractieveInformatieStructuren4.jpg" alt="Interactieve Informatie Structuren 4" className="w-full h-full object-cover" />
+              <img src="/InteractieveInformatieStructuren4.jpg" alt="Interactieve Informatie Structuren 4" loading="lazy" className="w-full h-full object-cover" />
             </div>
           </div>
           {/* Rechterkolom: lange foto die doorloopt */}
           <div className="flex-1 rounded overflow-hidden min-h-0">
-            <img src="/InteractieveInformatieStructuren5.jpg" alt="Interactieve Informatie Structuren 5" className="w-full h-full object-cover" />
+            <img src="/InteractieveInformatieStructuren5.jpg" alt="Interactieve Informatie Structuren 5" loading="lazy" className="w-full h-full object-cover" />
           </div>
         </div>
 
         {/* Rij 3: 4 kleine foto's naast elkaar */}
         <div className="flex gap-2 min-h-0" style={{ flex: "0.8 0.8 0" }}>
           <div className="flex-1 rounded overflow-hidden min-h-0">
-            <img src="/InteractieveInformatieStructuren6.jpg" alt="Interactieve Informatie Structuren 6" className="w-full h-full object-cover" />
+            <img src="/InteractieveInformatieStructuren6.jpg" alt="Interactieve Informatie Structuren 6" loading="lazy" className="w-full h-full object-cover" />
           </div>
           <div className="flex-1 rounded overflow-hidden min-h-0">
-            <img src="/InteractieveInformatieStructuren7.jpeg" alt="Interactieve Informatie Structuren 7" className="w-full h-full object-cover" />
+            <img src="/InteractieveInformatieStructuren7.jpeg" alt="Interactieve Informatie Structuren 7" loading="lazy" className="w-full h-full object-cover" />
           </div>
           <div className="flex-1 rounded overflow-hidden min-h-0">
-            <img src="/InteractieveInformatieStructuren8.jpg" alt="Interactieve Informatie Structuren 8" className="w-full h-full object-cover" />
+            <img src="/InteractieveInformatieStructuren8.jpg" alt="Interactieve Informatie Structuren 8" loading="lazy" className="w-full h-full object-cover" />
           </div>
           <div className="flex-1 rounded overflow-hidden min-h-0">
-            <img src="/InteractieveInformatieStructuren9.jpg" alt="Interactieve Informatie Structuren 9" className="w-full h-full object-cover" />
+            <img src="/InteractieveInformatieStructuren9.jpg" alt="Interactieve Informatie Structuren 9" loading="lazy" className="w-full h-full object-cover" />
           </div>
         </div>
 
         {/* Rij 4: grote foto links + rechts 2 foto's gestapeld */}
         <div className="flex gap-2 min-h-0" style={{ flex: "1.5 1.5 0" }}>
           <div className="rounded overflow-hidden min-h-0" style={{ flex: "1.5 1.5 0" }}>
-            <img src="/InteractieveInformatieStructuren10.webp" alt="Interactieve Informatie Structuren 10" className="w-full h-full object-cover" />
+            <img src="/InteractieveInformatieStructuren10.webp" alt="Interactieve Informatie Structuren 10" loading="lazy" className="w-full h-full object-cover" />
           </div>
           <div className="flex flex-col gap-2 flex-1 min-h-0">
             <div className="flex-1 rounded overflow-hidden min-h-0">
-              <img src="/InteractieveInformatieStructuren11.jpeg" alt="Interactieve Informatie Structuren 11" className="w-full h-full object-cover" />
+              <img src="/InteractieveInformatieStructuren11.jpeg" alt="Interactieve Informatie Structuren 11" loading="lazy" className="w-full h-full object-cover" />
             </div>
             <div className="flex-1 rounded overflow-hidden min-h-0">
-              <img src="/InteractieveInformatieStructuren12.jpg" alt="Interactieve Informatie Structuren 12" className="w-full h-full object-cover" />
+              <img src="/InteractieveInformatieStructuren12.jpg" alt="Interactieve Informatie Structuren 12" loading="lazy" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -377,7 +378,7 @@ const pages: Page[] = [
       <div className="flex flex-row w-full h-full gap-3">
 
         <div className="flex-1 bg-gray-100 rounded p-3 overflow-hidden">
-          <p className="text-[11.5px] text-gray-500 leading-relaxed">
+          <p className="text-[11px] text-gray-500 leading-relaxed">
           Sequentie is een belangrijk onderdeel van de visuele structuur binnen Machine Hallucinations. 
           De installatie bestaat uit een continue stroom van beelden die in elkaar overlopen zonder duidelijke onderbrekingen. 
           In plaats van vaste scènes of een lineair verloop ontstaat er een eindeloze transformatie waarin elke visuele toestand automatisch overgaat in de volgende.
@@ -387,7 +388,7 @@ const pages: Page[] = [
         </div>
 
         <div className="flex-1 bg-gray-100 rounded p-3 overflow-hidden">
-          <p className="text-[11.5px] text-gray-500 leading-relaxed">
+          <p className="text-[11px] text-gray-500 leading-relaxed">
           Het systeem voelt daardoor minder als een afgewerkt video-werk en meer als een proces dat voortdurend in beweging is en zichzelf blijft genereren.
           De overgangen tussen de beelden spelen hierbij een grote rol. 
           Vormen smelten samen, vervormen en evolueren op een vloeiende manier waardoor een bijna hypnotisch ritme ontstaat. 
@@ -406,7 +407,7 @@ const pages: Page[] = [
     content: (
       <div className="flex w-full h-full">
         <div className="flex-1 bg-gray-200 rounded flex items-center justify-center">
-        <img src="/2021_Refik-Anadol_Machine-Hallucinations.jpg.webp" alt="Sequentiële Grafische Systemen" className="w-full h-full object-cover" />
+        <img src="/2021_Refik-Anadol_Machine-Hallucinations.jpg.webp" alt="Sequentiële Grafische Systemen" loading="lazy" className="w-full h-full object-cover" />
         </div>
       </div>
     ),
@@ -422,6 +423,7 @@ const pages: Page[] = [
         <img
           src="/InteractieveInformatieStructuren5.jpg"
           alt="Back Cover"
+          loading="lazy"
           className="absolute inset-0 w-full h-full object-cover"
           style={{ opacity: 0.3, mixBlendMode: "luminosity" }}
         />
@@ -504,6 +506,7 @@ function PageLabel({
       {isRight
         ? `${meta.theme} | ${meta.pageNumber}`
         : `${meta.pageNumber} | ${meta.theme}`}
+
     </div>
   );
 }
@@ -573,9 +576,13 @@ function CrossSpread({
 export default function Flipbook({
   externalSpreadIndex,
   onSpreadChange,
+  externalMobilePageIndex,
+  onMobilePageChange,
 }: {
   externalSpreadIndex?: number;
   onSpreadChange?: (index: number) => void;
+  externalMobilePageIndex?: number;
+  onMobilePageChange?: (index: number) => void;
 }) {
   const [spreadIndex, setSpreadIndex] = useState<number>(
     externalSpreadIndex ?? 0
@@ -591,25 +598,43 @@ export default function Flipbook({
     }
   }, [externalSpreadIndex]);
 
+  // Sync mobile page met externe navigatie (vanuit menu)
+  useEffect(() => {
+    if (externalMobilePageIndex !== undefined && externalMobilePageIndex !== mobilePageIndex) {
+      setMobilePageIndex(externalMobilePageIndex);
+    }
+  }, [externalMobilePageIndex]);
+
   const updateSpread = (index: number) => {
     setSpreadIndex(index);
     onSpreadChange?.(index);
   };
 
+  const updateMobilePage = (index: number) => {
+    setMobilePageIndex(index);
+    onMobilePageChange?.(index);
+  };
+
   const nextSpread = () => updateSpread(Math.min(spreadIndex + 1, totalSpreads));
   const prevSpread = () => updateSpread(Math.max(spreadIndex - 1, 0));
 
-  const nextPage = () => setMobilePageIndex((p) => Math.min(p + 1, totalPages));
-  const prevPage = () => setMobilePageIndex((p) => Math.max(p - 1, 0));
+  const nextPage = () => updateMobilePage(Math.min(mobilePageIndex + 1, totalPages));
+  const prevPage = () => updateMobilePage(Math.max(mobilePageIndex - 1, 0));
+
+  // Gebruik ref zodat keydown listener niet elke keer opnieuw aangemaakt wordt
+  const spreadIndexRef = useRef(spreadIndex);
+  spreadIndexRef.current = spreadIndex;
+  const mobilePageIndexRef = useRef(mobilePageIndex);
+  mobilePageIndexRef.current = mobilePageIndex;
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight") nextSpread();
-      if (e.key === "ArrowLeft") prevSpread();
+      if (e.key === "ArrowRight") updateSpread(Math.min(spreadIndexRef.current + 1, totalSpreads));
+      if (e.key === "ArrowLeft") updateSpread(Math.max(spreadIndexRef.current - 1, 0));
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [spreadIndex]);
+  }, []); // Lege deps — listener wordt maar één keer aangemaakt
 
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     touchStartX.current = e.touches[0].clientX;
@@ -617,8 +642,8 @@ export default function Flipbook({
   const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
     if (touchStartX.current === null) return;
     const deltaX = e.changedTouches[0].clientX - touchStartX.current;
-    if (deltaX > 50) prevPage();
-    if (deltaX < -50) nextPage();
+    if (deltaX > 50) updateMobilePage(Math.max(mobilePageIndexRef.current - 1, 0));
+    if (deltaX < -50) updateMobilePage(Math.min(mobilePageIndexRef.current + 1, totalPages));
     touchStartX.current = null;
   };
 
@@ -692,6 +717,119 @@ export default function Flipbook({
       </div>
     </>
   );
+
+
+  // ── PDF EXPORT ──────────────────────────────────────────────
+  const [isExporting, setIsExporting] = useState(false);
+
+  const exportToPDF = async () => {
+    setIsExporting(true);
+
+    // Laad scripts dynamisch
+    const loadScript = (src: string) =>
+      new Promise<void>((res) => {
+        if (document.querySelector(`script[src="${src}"]`)) { res(); return; }
+        const s = document.createElement("script");
+        s.src = src;
+        s.onload = () => res();
+        document.head.appendChild(s);
+      });
+
+    await loadScript("https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js");
+    await loadScript("https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js");
+
+    const h2c = (window as any).html2canvas;
+    const { jsPDF } = (window as any).jspdf;
+
+    // A4 landscape in px @ 96dpi
+    const PAGE_W = 1122;
+    const PAGE_H = 794;
+
+    const pdf = new jsPDF({ orientation: "landscape", unit: "px", format: [PAGE_W, PAGE_H] });
+
+    // Spread configuratie: [linker page-index, rechter page-index]
+    // null = lege helft (cover/backcover)
+    const spreadDefs: [number | null, number | null][] = [
+      [null, 0],    // Cover
+      [1,    2],    // Inside / Intro
+      [3,    4],    // Sound Design
+      [5,    6],    // Data driven
+      [7,    8],    // Grafiek
+      [9,    10],   // Interactieve
+      [11,   12],   // Sequentiële
+      [13,   null], // Back cover
+    ];
+
+    for (let si = 0; si < spreadDefs.length; si++) {
+      const [leftIdx, rightIdx] = spreadDefs[si];
+
+      // Tijdelijk een off-screen container renderen
+      const wrap = document.createElement("div");
+      wrap.style.cssText = `
+        position: fixed;
+        top: -9999px;
+        left: -9999px;
+        width: ${PAGE_W}px;
+        height: ${PAGE_H}px;
+        display: flex;
+        gap: 12px;
+        padding: 24px;
+        box-sizing: border-box;
+        background: white;
+        font-family: Georgia, serif;
+      `;
+
+      const makeHalf = (pageIdx: number | null) => {
+        const half = document.createElement("div");
+        half.style.cssText = `
+          flex: 1;
+          height: 100%;
+          border: 1px solid #e5e7eb;
+          border-radius: 6px;
+          overflow: hidden;
+          position: relative;
+          background: white;
+        `;
+
+        if (pageIdx !== null) {
+          // Kloon de pagina uit de verborgen "pdf-source" div
+          const source = document.getElementById(`pdf-page-${pageIdx}`);
+          if (source) {
+            const clone = source.cloneNode(true) as HTMLElement;
+            clone.style.cssText = "width:100%;height:100%;position:relative;";
+            half.appendChild(clone);
+          }
+        } else {
+          half.style.background = "#f3f4f6";
+        }
+        return half;
+      };
+
+      wrap.appendChild(makeHalf(leftIdx));
+      wrap.appendChild(makeHalf(rightIdx));
+      document.body.appendChild(wrap);
+
+      const canvas = await h2c(wrap, {
+        scale: 1.5,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: "#ffffff",
+        width: PAGE_W,
+        height: PAGE_H,
+        logging: false,
+      });
+
+      document.body.removeChild(wrap);
+
+      const imgData = canvas.toDataURL("image/jpeg", 0.92);
+      if (si > 0) pdf.addPage([PAGE_W, PAGE_H], "landscape");
+      pdf.addImage(imgData, "JPEG", 0, 0, PAGE_W, PAGE_H);
+    }
+
+    pdf.save("HALLUCINATE_magazine.pdf");
+    setIsExporting(false);
+  };
+  // ────────────────────────────────────────────────────────────
 
   return (
     <div className={styles.wrapper}>
@@ -801,6 +939,37 @@ export default function Flipbook({
         >
           ›
         </button>
+      </div>
+
+      {/* PDF EXPORT KNOP */}
+      <div className="flex justify-center mt-3">
+        <button
+          onClick={exportToPDF}
+          disabled={isExporting}
+          className="flex items-center gap-2 px-5 py-2 bg-black text-white text-xs rounded hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        >
+          {isExporting ? (
+            <>
+              <span className="animate-spin inline-block w-3 h-3 border-2 border-white border-t-transparent rounded-full" />
+              Exporteren...
+            </>
+          ) : (
+            <>↓ Download PDF</>
+          )}
+        </button>
+      </div>
+
+      {/* Verborgen bronpaginas voor PDF-export */}
+      <div style={{ position: "fixed", top: "-9999px", left: "-9999px", pointerEvents: "none", zIndex: -1 }}>
+        {pages.map((page, idx) => (
+          <div
+            key={page.id}
+            id={`pdf-page-${idx}`}
+            style={{ width: "500px", height: "700px", background: "white", overflow: "hidden", position: "relative" }}
+          >
+            {page.content}
+          </div>
+        ))}
       </div>
     </div>
   );

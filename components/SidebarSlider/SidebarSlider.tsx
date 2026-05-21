@@ -2,13 +2,16 @@
 
 import * as React from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { X } from "lucide-react" // For close icon
-import { GiHamburgerMenu } from "react-icons/gi" // For hamburger icon
+import { X } from "lucide-react"
+import { GiHamburgerMenu } from "react-icons/gi"
+import { themes, ThemeItem } from "@/components/themes"
 
 interface SidebarSliderProps {
   isOpen: boolean
   onClose: () => void
-  children: React.ReactNode
+  // Callback die zowel spreadIndex (desktop) als mobilePageIndex (mobile) doorgeeft
+  onThemeClick: (spreadIndex: number, mobilePageIndex: number) => void
+  activeSpreadIndex?: number
 }
 
 export function SidebarToggle({ onClick }: { onClick: () => void }) {
@@ -22,7 +25,17 @@ export function SidebarToggle({ onClick }: { onClick: () => void }) {
   )
 }
 
-export default function SidebarSlider({ isOpen, onClose, children }: SidebarSliderProps) {
+export default function SidebarSlider({
+  isOpen,
+  onClose,
+  onThemeClick,
+  activeSpreadIndex,
+}: SidebarSliderProps) {
+  const handleClick = (theme: ThemeItem) => {
+    onThemeClick(theme.spreadIndex, theme.mobilePageIndex)
+    onClose()
+  }
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -50,7 +63,27 @@ export default function SidebarSlider({ isOpen, onClose, children }: SidebarSlid
                 <X size={24} />
               </button>
             </div>
-            <nav>{children}</nav>
+
+            <p className="text-xs uppercase tracking-widest text-gray-400 mb-3">Thema's</p>
+
+            <nav className="flex flex-col">
+              {themes.map((theme) => {
+                const isActive = activeSpreadIndex === theme.spreadIndex
+                return (
+                  <button
+                    key={theme.id}
+                    onClick={() => handleClick(theme)}
+                    className={`text-left px-3 py-3 rounded text-sm transition-colors ${
+                      isActive
+                        ? "bg-black text-white font-semibold"
+                        : "text-gray-700 hover:bg-gray-100"
+                    }`}
+                  >
+                    {theme.title}
+                  </button>
+                )
+              })}
+            </nav>
           </motion.div>
         </>
       )}
