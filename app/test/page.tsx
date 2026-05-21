@@ -9,8 +9,8 @@ export default function BookWithGestures() {
 
   return (
     <>
-      <HandTracker onGesture={setGesture} />
-      <Flipbook gesture={gesture} />
+      <HandTracker  />
+      <Flipbook />
     </>
   );
 }
