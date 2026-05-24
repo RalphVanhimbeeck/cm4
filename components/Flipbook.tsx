@@ -8,6 +8,7 @@ type Page = {
   content: React.ReactNode | null;
 };
 
+export const printPages: React.ReactNode[] = [];
 const pages: Page[] = [
   // 0 — COVER
   {
@@ -468,6 +469,9 @@ const spreadMeta: SpreadMeta[] = [
   { left: null, right: null },
 ];
 
+// Vul printPages voor gebruik in PrintLayout
+pages.forEach((p, i) => { printPages[i] = p.content; });
+
 const pageMeta: ({ pageNumber: number; theme: string } | null)[] = [
   null,
   null,
@@ -720,116 +724,123 @@ export default function Flipbook({
 
 
   // ── PDF EXPORT ──────────────────────────────────────────────
-  const [isExporting, setIsExporting] = useState(false);
+  const printPDF = () => {
+    // Voeg tijdelijke print-stijlen toe
+    const style = document.createElement("style");
+    style.id = "magazine-print-style";
+    style.innerHTML = `
+      @media print {
+        @page { size: A4 landscape; margin: 8mm; }
 
-  const exportToPDF = async () => {
-    setIsExporting(true);
+        body > * { display: none !important; }
+        #magazine-print-area { display: block !important; }
 
-    // Laad scripts dynamisch
-    const loadScript = (src: string) =>
-      new Promise<void>((res) => {
-        if (document.querySelector(`script[src="${src}"]`)) { res(); return; }
-        const s = document.createElement("script");
-        s.src = src;
-        s.onload = () => res();
-        document.head.appendChild(s);
-      });
+        #magazine-print-area {
+          position: fixed;
+          top: 0; left: 0;
+          width: 100%;
+        }
 
-    await loadScript("https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js");
-    await loadScript("https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js");
+        .print-spread {
+          display: flex !important;
+          width: 100%;
+          height: calc(100vh - 16mm);
+          gap: 6mm;
+          page-break-after: always;
+          break-after: page;
+          box-sizing: border-box;
+        }
 
-    const h2c = (window as any).html2canvas;
-    const { jsPDF } = (window as any).jspdf;
+        .print-spread:last-child {
+          page-break-after: avoid;
+          break-after: avoid;
+        }
 
-    // A4 landscape in px @ 96dpi
-    const PAGE_W = 1122;
-    const PAGE_H = 794;
-
-    const pdf = new jsPDF({ orientation: "landscape", unit: "px", format: [PAGE_W, PAGE_H] });
-
-    // Spread configuratie: [linker page-index, rechter page-index]
-    // null = lege helft (cover/backcover)
-    const spreadDefs: [number | null, number | null][] = [
-      [null, 0],    // Cover
-      [1,    2],    // Inside / Intro
-      [3,    4],    // Sound Design
-      [5,    6],    // Data driven
-      [7,    8],    // Grafiek
-      [9,    10],   // Interactieve
-      [11,   12],   // Sequentiële
-      [13,   null], // Back cover
-    ];
-
-    for (let si = 0; si < spreadDefs.length; si++) {
-      const [leftIdx, rightIdx] = spreadDefs[si];
-
-      // Tijdelijk een off-screen container renderen
-      const wrap = document.createElement("div");
-      wrap.style.cssText = `
-        position: fixed;
-        top: -9999px;
-        left: -9999px;
-        width: ${PAGE_W}px;
-        height: ${PAGE_H}px;
-        display: flex;
-        gap: 12px;
-        padding: 24px;
-        box-sizing: border-box;
-        background: white;
-        font-family: Georgia, serif;
-      `;
-
-      const makeHalf = (pageIdx: number | null) => {
-        const half = document.createElement("div");
-        half.style.cssText = `
+        .print-page {
           flex: 1;
           height: 100%;
-          border: 1px solid #e5e7eb;
-          border-radius: 6px;
           overflow: hidden;
           position: relative;
+          border: 1px solid #e5e7eb;
+          border-radius: 4px;
           background: white;
-        `;
-
-        if (pageIdx !== null) {
-          // Kloon de pagina uit de verborgen "pdf-source" div
-          const source = document.getElementById(`pdf-page-${pageIdx}`);
-          if (source) {
-            const clone = source.cloneNode(true) as HTMLElement;
-            clone.style.cssText = "width:100%;height:100%;position:relative;";
-            half.appendChild(clone);
-          }
-        } else {
-          half.style.background = "#f3f4f6";
         }
-        return half;
+
+        .print-page-inner {
+          width: 100%;
+          height: 100%;
+          position: relative;
+        }
+
+        .print-page-empty {
+          flex: 1;
+          background: #f9fafb;
+          border: 1px solid #e5e7eb;
+          border-radius: 4px;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Spread configuratie
+    const spreadDefs: [number | null, number | null][] = [
+      [null, 0],
+      [1,    2],
+      [3,    4],
+      [5,    6],
+      [7,    8],
+      [9,    10],
+      [11,   12],
+      [13,   null],
+    ];
+
+    // Maak print-area aan
+    let printArea = document.getElementById("magazine-print-area");
+    if (!printArea) {
+      printArea = document.createElement("div");
+      printArea.id = "magazine-print-area";
+      printArea.style.display = "none";
+      document.body.appendChild(printArea);
+    }
+    printArea.innerHTML = "";
+
+    spreadDefs.forEach(([leftIdx, rightIdx]) => {
+      const spreadEl = document.createElement("div");
+      spreadEl.className = "print-spread";
+
+      const makeSide = (idx: number | null) => {
+        if (idx === null) {
+          const empty = document.createElement("div");
+          empty.className = "print-page-empty";
+          return empty;
+        }
+        const source = document.getElementById(`pdf-page-${idx}`);
+        const pageEl = document.createElement("div");
+        pageEl.className = "print-page";
+        if (source) {
+          const inner = document.createElement("div");
+          inner.className = "print-page-inner";
+          inner.appendChild(source.cloneNode(true));
+          pageEl.appendChild(inner);
+        }
+        return pageEl;
       };
 
-      wrap.appendChild(makeHalf(leftIdx));
-      wrap.appendChild(makeHalf(rightIdx));
-      document.body.appendChild(wrap);
+      spreadEl.appendChild(makeSide(leftIdx));
+      spreadEl.appendChild(makeSide(rightIdx));
+      printArea!.appendChild(spreadEl);
+    });
 
-      const canvas = await h2c(wrap, {
-        scale: 1.5,
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: "#ffffff",
-        width: PAGE_W,
-        height: PAGE_H,
-        logging: false,
-      });
+    // Print
+    window.print();
 
-      document.body.removeChild(wrap);
-
-      const imgData = canvas.toDataURL("image/jpeg", 0.92);
-      if (si > 0) pdf.addPage([PAGE_W, PAGE_H], "landscape");
-      pdf.addImage(imgData, "JPEG", 0, 0, PAGE_W, PAGE_H);
-    }
-
-    pdf.save("HALLUCINATE_magazine.pdf");
-    setIsExporting(false);
+    // Cleanup na print
+    setTimeout(() => {
+      const s = document.getElementById("magazine-print-style");
+      if (s) s.remove();
+      if (printArea) printArea.innerHTML = "";
+    }, 1000);
   };
-  // ────────────────────────────────────────────────────────────
 
   return (
     <div className={styles.wrapper}>
@@ -944,18 +955,11 @@ export default function Flipbook({
       {/* PDF EXPORT KNOP */}
       <div className="flex justify-center mt-3">
         <button
-          onClick={exportToPDF}
-          disabled={isExporting}
+          onClick={printPDF}
+          data-pdf-btn
           className="flex items-center gap-2 px-5 py-2 bg-black text-white text-xs rounded hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
-          {isExporting ? (
-            <>
-              <span className="animate-spin inline-block w-3 h-3 border-2 border-white border-t-transparent rounded-full" />
-              Exporteren...
-            </>
-          ) : (
-            <>↓ Download PDF</>
-          )}
+↓ Download / Print PDF
         </button>
       </div>
 
@@ -971,6 +975,7 @@ export default function Flipbook({
           </div>
         ))}
       </div>
+
     </div>
   );
 }
