@@ -2,6 +2,31 @@
 
 import { useEffect, useRef, useCallback } from "react";
 
+// ─── Singleton: de Hands WASM-module wordt maar één keer per sessie
+// aangemaakt, ongeacht hoe vaak HandTracker mount/unmount (bv. bij
+// React Strict Mode of bij het in/uit fullscreen gaan). Dat voorkomt
+// de "Module.arguments has been replaced..." fout door dubbele init.
+let sharedHandsPromise: Promise<any> | null = null;
+function getSharedHands() {
+  if (!sharedHandsPromise) {
+    sharedHandsPromise = (async () => {
+      const { Hands } = await import("@mediapipe/hands");
+      const hands = new Hands({
+        locateFile: (file: string) =>
+          `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`,
+      });
+      hands.setOptions({
+        maxNumHands:            1,
+        modelComplexity:        1,
+        minDetectionConfidence: 0.72,
+        minTrackingConfidence:  0.55,
+      });
+      return hands;
+    })();
+  }
+  return sharedHandsPromise;
+}
+
 const HAND_CONNECTIONS = [
   [0,1],[1,2],[2,3],[3,4],
   [0,5],[5,6],[6,7],[7,8],
@@ -288,28 +313,23 @@ export default function HandTracker({ onFlip, showOverlay = true }: Props) {
   // ── MediaPipe init ────────────────────────────────────────────────────────
   useEffect(() => {
     let camera: any;
+    let cancelled = false;
 
     const init = async () => {
-      const { Hands }  = await import("@mediapipe/hands");
-      const { Camera } = await import("@mediapipe/camera_utils");
-
-      const hands = new Hands({
-        locateFile: (file: string) =>
-          `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`,
-      });
-
-      hands.setOptions({
-        maxNumHands:            1,
-        modelComplexity:        1,
-        minDetectionConfidence: 0.72,
-        minTrackingConfidence:  0.55,
-      });
+      const hands = await getSharedHands();
+      if (cancelled) return;
 
       hands.onResults(handleResults);
 
+      const { Camera } = await import("@mediapipe/camera_utils");
+      if (cancelled) return;
+
       camera = new Camera(videoRef.current!, {
         onFrame: async () => {
-          await hands.send({ image: videoRef.current! });
+          if (cancelled) return;
+          const video = videoRef.current;
+          if (!video || video.readyState < 2) return; // nog geen frame beschikbaar
+          await hands.send({ image: video });
         },
       });
 
@@ -317,7 +337,15 @@ export default function HandTracker({ onFlip, showOverlay = true }: Props) {
     };
 
     init();
-    return () => { camera?.stop(); };
+    return () => {
+      cancelled = true;
+      camera?.stop?.();
+      // Stop expliciet de MediaStream-tracks, anders blijft het
+      // webcam-lampje soms aan staan ondanks camera.stop().
+      const stream = videoRef.current?.srcObject as MediaStream | undefined;
+      stream?.getTracks().forEach((track) => track.stop());
+      if (videoRef.current) videoRef.current.srcObject = null;
+    };
   }, [handleResults]);
 
   // ── Render ────────────────────────────────────────────────────────────────

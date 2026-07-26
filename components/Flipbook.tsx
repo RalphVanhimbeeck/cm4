@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import styles from "./Flipbook.module.css";
+import HandTracker from "./HandTracker";
 
 type Page = {
   id: string;
@@ -148,19 +149,29 @@ const pages: Page[] = [
   {
     id: "page-4",
     content: (
-      <div className="flex flex-col w-full h-full gap-3">
-        <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
-          <p className="text-xs text-gray-500 leading-relaxed">
-          Bij Machine Hallucinations ontstaan de visuals volledig vanuit data en artificiële intelligentie. 
-          In plaats van beelden manueel te ontwerpen zoals bij klassieke motion graphics, gebruikt Refik Anadol enorme datasets die door AI geanalyseerd worden. 
-          </p>
-        </div>
-        <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
-          <p className="text-xs text-gray-500 leading-relaxed">
-            Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident deserunt mollit.
-          </p>
+      <div className="flex flex-col w-full h-full">
+        <div
+          className="flex-[3]"
+          style={{
+            backgroundImage: "url('/Datadrivengrafischeobjecten.jpeg')",
+            backgroundSize: "calc(200% + 16px) 100%",
+            backgroundPosition: "left center",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
+        <div className="flex-[2] flex flex-row gap-3 pt-3">
+          <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
+            <p className="text-xs text-gray-500 leading-relaxed">
+            Bij Machine Hallucinations ontstaan de visuals volledig vanuit data en artificiële intelligentie. 
+            In plaats van beelden manueel te ontwerpen zoals bij klassieke motion graphics, gebruikt Refik Anadol enorme datasets die door AI geanalyseerd worden. 
+            </p>
+          </div>
+          <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
+            <p className="text-xs text-gray-500 leading-relaxed">
+              Voor Unsupervised gebruikte hij de digitale collectie van het MoMA, waarbij de machine verbanden zocht tussen kleuren, vormen, composities en stijlen.
+              De data wordt zo omgezet in bewegende en abstracte visuals die constant veranderen.
+            </p>
+          </div>
         </div>
       </div>
     ),
@@ -169,20 +180,30 @@ const pages: Page[] = [
   {
     id: "page-5",
     content: (
-      <div className="flex flex-col w-full h-full gap-3">
-        <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
-          <p className="text-xs text-gray-500 leading-relaxed">
-            Sunt in culpa qui officia deserunt mollit anim id est laborum
-            consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste
-            natus error sit voluptatem accusantium doloremque.
-          </p>
-        </div>
-        <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
-          <p className="text-xs text-gray-500 leading-relaxed">
-            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-            aut fugit, sed quia consequuntur magni dolores eos qui ratione
-            sequi nesciunt neque porro quisquam.
-          </p>
+      <div className="flex flex-col w-full h-full">
+        <div
+          className="flex-[3]"
+          style={{
+            backgroundImage: "url('/Datadrivengrafischeobjecten.jpeg')",
+            backgroundSize: "calc(200% + 16px) 100%",
+            backgroundPosition: "right center",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
+        <div className="flex-[2] flex flex-row gap-3 pt-3">
+          <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
+            <p className="text-xs text-gray-500 leading-relaxed">
+              De grafische objecten voelen daardoor niet statisch aan, maar eerder als levende systemen die blijven evolueren.
+              De visuals lijken op vloeistoffen, digitale sculpturen of neurale netwerken die zich in realtime ontwikkelen.
+              Wat interessant is, is dat Refik Anadol data ziet als een nieuw artistiek materiaal.
+            </p>
+          </div>
+          <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
+            <p className="text-xs text-gray-500 leading-relaxed">
+              Hierdoor verschuift grafisch ontwerp van iets vast en gecontroleerd naar een generatief proces waarin algoritmes mee bepalen hoe de beelden eruitzien.
+              Dat roept ook vragen op over creativiteit en auteurschap: is de kunstenaar nog de maker, of speelt de AI daar even goed een rol in?
+            </p>
+          </div>
         </div>
       </div>
     ),
@@ -472,6 +493,23 @@ const spreadMeta: SpreadMeta[] = [
 // Vul printPages voor gebruik in PrintLayout
 pages.forEach((p, i) => { printPages[i] = p.content; });
 
+/* Voettekst per verborgen PDF-bronpagina (index in de `pages`-array).
+   Zelfde thema's/nummering als de live weergave, apart bijgehouden
+   omdat de PDF-export enkel `page.content` klont, niet de live PageLabel-overlay. */
+const pdfFooters: Record<number, { text: string; align: "left" | "right" }> = {
+  2:  { text: "Introduction | 1",                                align: "right" },
+  3:  { text: "2 | Sound Design",                                 align: "left"  },
+  4:  { text: "Sound Design | 3",                                  align: "right" },
+  5:  { text: "4 | Data driven grafische objecten",                align: "left"  },
+  6:  { text: "Data driven grafische objecten | 5",                align: "right" },
+  7:  { text: "6 | Grafiek in tijd en ruimte",                     align: "left"  },
+  8:  { text: "Grafiek in tijd en ruimte | 7",                     align: "right" },
+  9:  { text: "8 | Interactieve informatie structuren",            align: "left"  },
+  10: { text: "Interactieve informatie structuren | 9",            align: "right" },
+  11: { text: "10 | Sequentiële grafische systemen",                align: "left"  },
+  12: { text: "Sequentiële grafische systemen | 11",                align: "right" },
+};
+
 const pageMeta: ({ pageNumber: number; theme: string } | null)[] = [
   null,
   null,
@@ -592,6 +630,35 @@ export default function Flipbook({
     externalSpreadIndex ?? 0
   );
   const [mobilePageIndex, setMobilePageIndex] = useState<number>(0);
+  const [isExportingPDF, setIsExportingPDF] = useState(false);
+  const [showGridView, setShowGridView] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [handTrackingEnabled, setHandTrackingEnabled] = useState(false);
+  const isFullscreenRef = useRef(false);
+  const flipbookWrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      const active = !!document.fullscreenElement;
+      setIsFullscreen(active);
+      isFullscreenRef.current = active;
+    };
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () => document.removeEventListener("fullscreenchange", handleFullscreenChange);
+  }, []);
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      flipbookWrapperRef.current?.requestFullscreen?.();
+    } else {
+      document.exitFullscreen?.();
+      // Meteen zelf bijwerken i.p.v. enkel te wachten op het
+      // (soms vertraagde) fullscreenchange-event van de browser —
+      // zo stopt de camera direct zodra er op de knop geklikt wordt.
+      setIsFullscreen(false);
+      isFullscreenRef.current = false;
+    }
+  };
 
   const touchStartX = useRef<number | null>(null);
 
@@ -622,6 +689,14 @@ export default function Flipbook({
   const nextSpread = () => updateSpread(Math.min(spreadIndex + 1, totalSpreads));
   const prevSpread = () => updateSpread(Math.max(spreadIndex - 1, 0));
 
+  // Welke spread hoort bij welke pagina-index (zelfde indeling als getSpread hieronder)
+  const pageIndexToSpread = [0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7];
+  const goToPage = (idx: number) => {
+    updateMobilePage(idx);
+    updateSpread(pageIndexToSpread[idx] ?? 0);
+    setShowGridView(false);
+  };
+
   const nextPage = () => updateMobilePage(Math.min(mobilePageIndex + 1, totalPages));
   const prevPage = () => updateMobilePage(Math.max(mobilePageIndex - 1, 0));
 
@@ -630,6 +705,16 @@ export default function Flipbook({
   spreadIndexRef.current = spreadIndex;
   const mobilePageIndexRef = useRef(mobilePageIndex);
   mobilePageIndexRef.current = mobilePageIndex;
+
+  // Stabiele callback voor HandTracker — met lege deps blijft de referentie
+  // gelijk over renders heen, zodat HandTracker's camera niet steeds herstart.
+  const handleHandFlip = useCallback((dir: "LEFT" | "RIGHT") => {
+    if (dir === "RIGHT") {
+      updateSpread(Math.min(spreadIndexRef.current + 1, totalSpreads));
+    } else {
+      updateSpread(Math.max(spreadIndexRef.current - 1, 0));
+    }
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -723,127 +808,165 @@ export default function Flipbook({
   );
 
 
-  // ── PDF EXPORT ──────────────────────────────────────────────
-  const printPDF = () => {
-    // Voeg tijdelijke print-stijlen toe
-    const style = document.createElement("style");
-    style.id = "magazine-print-style";
-    style.innerHTML = `
-      @media print {
-        @page { size: A4 landscape; margin: 8mm; }
+  // ── PDF EXPORT — échte download, zoals bij Issuu ──────────────
+  const [pdfProgress, setPdfProgress] = useState<string>("");
 
-        body > * { display: none !important; }
-        #magazine-print-area { display: block !important; }
+  const withTimeout = <T,>(promise: Promise<T>, ms: number, label: string): Promise<T> =>
+    Promise.race([
+      promise,
+      new Promise<T>((_, reject) =>
+        setTimeout(() => reject(new Error(`Time-out (${ms / 1000}s) bij: ${label}`)), ms)
+      ),
+    ]);
 
-        #magazine-print-area {
-          position: fixed;
-          top: 0; left: 0;
-          width: 100%;
-        }
+  const exportPDF = async () => {
+    setIsExportingPDF(true);
+    setPdfProgress("Starten…");
+    console.time("PDF-export totaal");
+    try {
+      const { default: html2canvas } = await import("html2canvas-pro");
+      const { jsPDF } = await import("jspdf");
 
-        .print-spread {
-          display: flex !important;
-          width: 100%;
-          height: calc(100vh - 16mm);
-          gap: 6mm;
-          page-break-after: always;
-          break-after: page;
-          box-sizing: border-box;
-        }
+      const spreadDefs: [number | null, number | null][] = [
+        [null, 0],
+        [1,    2],
+        [3,    4],
+        [5,    6],
+        [7,    8],
+        [9,    10],
+        [11,   12],
+        [13,   null],
+      ];
 
-        .print-spread:last-child {
-          page-break-after: avoid;
-          break-after: avoid;
-        }
+      const A4_WIDTH_MM = 297;
+      const A4_HEIGHT_MM = 210;
+      const CAPTURE_WIDTH = 1400;
+      const CAPTURE_HEIGHT = 990;
 
-        .print-page {
-          flex: 1;
-          height: 100%;
-          overflow: hidden;
-          position: relative;
-          border: 1px solid #e5e7eb;
-          border-radius: 4px;
-          background: white;
-        }
+      let exportRoot = document.getElementById("pdf-export-root");
+      if (!exportRoot) {
+        exportRoot = document.createElement("div");
+        exportRoot.id = "pdf-export-root";
+        exportRoot.style.position = "fixed";
+        exportRoot.style.top = "-9999px";
+        exportRoot.style.left = "-9999px";
+        exportRoot.style.pointerEvents = "none";
+        document.body.appendChild(exportRoot);
+      }
 
-        .print-page-inner {
-          width: 100%;
-          height: 100%;
-          position: relative;
-        }
+      const pdf = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
 
-        .print-page-empty {
-          flex: 1;
-          background: #f9fafb;
-          border: 1px solid #e5e7eb;
-          border-radius: 4px;
+      for (let i = 0; i < spreadDefs.length; i++) {
+        const [leftIdx, rightIdx] = spreadDefs[i];
+        const label = `spread ${i + 1}/${spreadDefs.length}`;
+        setPdfProgress(`Pagina ${i + 1} van ${spreadDefs.length}…`);
+        console.time(label);
+
+        const spreadEl = document.createElement("div");
+        spreadEl.className = "pdf-spread-hidden";
+        spreadEl.style.display = "flex";
+        spreadEl.style.width = `${CAPTURE_WIDTH}px`;
+        spreadEl.style.height = `${CAPTURE_HEIGHT}px`;
+        spreadEl.style.gap = "20px";
+        spreadEl.style.background = "white";
+
+        const makeSide = (idx: number | null) => {
+          const side = document.createElement("div");
+          side.style.flex = "1";
+          side.style.height = "100%";
+          side.style.position = "relative";
+          side.style.overflow = "hidden";
+          side.style.background = "white";
+          if (idx !== null) {
+            const source = document.getElementById(`pdf-page-${idx}`);
+            if (source) {
+              const clone = source.cloneNode(true) as HTMLElement;
+              clone.style.width = "100%";
+              clone.style.height = "100%";
+              // Video/canvas/iframe kan html2canvas niet renderen en laat het proces hangen — negeren.
+              clone.querySelectorAll("video, canvas, iframe").forEach((el) => el.remove());
+              side.appendChild(clone);
+            }
+          }
+          return side;
+        };
+
+        spreadEl.appendChild(makeSide(leftIdx));
+        spreadEl.appendChild(makeSide(rightIdx));
+
+        exportRoot.innerHTML = "";
+        exportRoot.appendChild(spreadEl);
+
+        // Geklonde <img>'s stonden op loading="lazy" en zaten al bij -9999px,
+        // dus ze zijn NOOIT geladen door de browser. Forceer nu eager laden.
+        const imgsInSpread = Array.from(spreadEl.querySelectorAll("img"));
+        imgsInSpread.forEach((img) => {
+          img.loading = "eager";
+          img.decoding = "sync";
+        });
+
+        console.log(`[${label}] ${imgsInSpread.length} afbeelding(en) gevonden, wachten tot ze geladen zijn…`);
+        await Promise.all(
+          imgsInSpread.map(
+            (img) =>
+              new Promise<void>((resolve) => {
+                if (img.complete && img.naturalWidth > 0) {
+                  resolve();
+                  return;
+                }
+                const done = () => resolve();
+                img.addEventListener("load", done, { once: true });
+                img.addEventListener("error", done, { once: true });
+                setTimeout(done, 8000); // val na 8s toch door, per afbeelding
+              })
+          )
+        );
+        console.log(`[${label}] afbeeldingen klaar, start html2canvas…`);
+
+        try {
+          const canvas = await withTimeout(
+            html2canvas(spreadEl, {
+              scale: 1.5,
+              useCORS: true,
+              backgroundColor: "#ffffff",
+              imageTimeout: 8000,
+              logging: false,
+              ignoreElements: (el) =>
+                el.tagName === "VIDEO" || el.tagName === "CANVAS" || el.tagName === "IFRAME",
+            }),
+            20000,
+            label
+          );
+
+          const imgData = canvas.toDataURL("image/jpeg", 0.85);
+          if (i > 0) pdf.addPage();
+          pdf.addImage(imgData, "JPEG", 0, 0, A4_WIDTH_MM, A4_HEIGHT_MM);
+          console.timeEnd(label);
+        } catch (spreadErr) {
+          console.error(`Fout bij ${label}:`, spreadErr);
+          console.timeEnd(label);
+          // Ga door met de volgende spread i.p.v. de hele export te laten vastlopen
+          if (i > 0) pdf.addPage();
         }
       }
-    `;
-    document.head.appendChild(style);
 
-    // Spread configuratie
-    const spreadDefs: [number | null, number | null][] = [
-      [null, 0],
-      [1,    2],
-      [3,    4],
-      [5,    6],
-      [7,    8],
-      [9,    10],
-      [11,   12],
-      [13,   null],
-    ];
-
-    // Maak print-area aan
-    let printArea = document.getElementById("magazine-print-area");
-    if (!printArea) {
-      printArea = document.createElement("div");
-      printArea.id = "magazine-print-area";
-      printArea.style.display = "none";
-      document.body.appendChild(printArea);
+      exportRoot.innerHTML = "";
+      setPdfProgress("PDF opslaan…");
+      pdf.save("HALLUCINATE-Refik-Anadol.pdf");
+      console.timeEnd("PDF-export totaal");
+    } catch (err) {
+      console.error("PDF export mislukt:", err);
+      console.timeEnd("PDF-export totaal");
+      alert("Er ging iets mis bij het downloaden van de PDF. Probeer opnieuw.");
+    } finally {
+      setIsExportingPDF(false);
+      setPdfProgress("");
     }
-    printArea.innerHTML = "";
-
-    spreadDefs.forEach(([leftIdx, rightIdx]) => {
-      const spreadEl = document.createElement("div");
-      spreadEl.className = "print-spread";
-
-      const makeSide = (idx: number | null) => {
-        if (idx === null) {
-          const empty = document.createElement("div");
-          empty.className = "print-page-empty";
-          return empty;
-        }
-        const source = document.getElementById(`pdf-page-${idx}`);
-        const pageEl = document.createElement("div");
-        pageEl.className = "print-page";
-        if (source) {
-          const inner = document.createElement("div");
-          inner.className = "print-page-inner";
-          inner.appendChild(source.cloneNode(true));
-          pageEl.appendChild(inner);
-        }
-        return pageEl;
-      };
-
-      spreadEl.appendChild(makeSide(leftIdx));
-      spreadEl.appendChild(makeSide(rightIdx));
-      printArea!.appendChild(spreadEl);
-    });
-
-    // Print
-    window.print();
-
-    // Cleanup na print
-    setTimeout(() => {
-      const s = document.getElementById("magazine-print-style");
-      if (s) s.remove();
-      if (printArea) printArea.innerHTML = "";
-    }, 1000);
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div ref={flipbookWrapperRef} className={styles.wrapper}>
+      {handTrackingEnabled && <HandTracker showOverlay onFlip={handleHandFlip} />}
       <div
         className="w-full max-w-5xl mx-auto px-2 sm:px-4"
         style={{ height: "62vh" }}
@@ -900,14 +1023,18 @@ export default function Flipbook({
       {/* CONTROLS — alleen desktop */}
       <div className="hidden md:flex justify-center gap-4 mt-4">
         <button
-          className="px-4 py-2 border rounded disabled:opacity-40"
+          className={`px-4 py-2 border rounded disabled:opacity-40 transition-colors ${
+            isFullscreen ? "border-white text-white hover:bg-white hover:text-black" : ""
+          }`}
           onClick={prevSpread}
           disabled={spreadIndex === 0}
         >
           ← Vorige
         </button>
         <button
-          className="px-4 py-2 border rounded disabled:opacity-40"
+          className={`px-4 py-2 border rounded disabled:opacity-40 transition-colors ${
+            isFullscreen ? "border-white text-white hover:bg-white hover:text-black" : ""
+          }`}
           onClick={nextSpread}
           disabled={spreadIndex === totalSpreads}
         >
@@ -916,7 +1043,7 @@ export default function Flipbook({
       </div>
 
       {/* NAV */}
-      <div className="flex items-center justify-center gap-2 mt-2 flex-wrap">
+      <div className={`${isFullscreen ? "hidden" : "flex"} items-center justify-center gap-2 mt-2 flex-wrap`}>
         <button
           className="md:hidden w-8 h-8 flex items-center justify-center rounded-full border bg-white shadow text-lg disabled:opacity-30"
           onClick={prevPage}
@@ -952,30 +1079,178 @@ export default function Flipbook({
         </button>
       </div>
 
-      {/* PDF EXPORT KNOP */}
-      <div className="flex justify-center mt-3">
+      {/* PDF EXPORT + GRID VIEW KNOPPEN */}
+      <div className="flex justify-center gap-2 mt-3">
         <button
-          onClick={printPDF}
+          onClick={exportPDF}
+          disabled={isExportingPDF}
           data-pdf-btn
-          className="flex items-center gap-2 px-5 py-2 bg-black text-white text-xs rounded hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          aria-label="Download als PDF"
+          className={`flex items-center gap-2 px-5 py-2 text-xs rounded disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${
+            isFullscreen
+              ? "bg-white text-black hover:bg-gray-200"
+              : "bg-black text-white hover:bg-gray-800"
+          }`}
         >
-↓ Download / Print PDF
+          {isExportingPDF ? (
+            <svg className="animate-spin" width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeOpacity="0.25" />
+              <path d="M22 12a10 10 0 0 0-10-10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+            </svg>
+          ) : (
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 3v12" />
+              <path d="M7 10l5 5 5-5" />
+              <path d="M5 21h14" />
+            </svg>
+          )}
+          {isExportingPDF ? (pdfProgress || "Bezig met downloaden…") : "Download"}
+        </button>
+
+        <button
+          onClick={() => setShowGridView(true)}
+          aria-label="Grid view"
+          className={`flex items-center gap-2 px-5 py-2 text-xs rounded transition-colors ${
+            isFullscreen
+              ? "bg-white text-black hover:bg-gray-200"
+              : "bg-black text-white hover:bg-gray-800"
+          }`}
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="3" width="7" height="7" rx="1" />
+            <rect x="14" y="3" width="7" height="7" rx="1" />
+            <rect x="3" y="14" width="7" height="7" rx="1" />
+            <rect x="14" y="14" width="7" height="7" rx="1" />
+          </svg>
+          Grid view
+        </button>
+
+        <button
+          onClick={toggleFullscreen}
+          aria-label={isFullscreen ? "Exit fullscreen" : "Fullscreen"}
+          className={`flex items-center gap-2 px-5 py-2 text-xs rounded transition-colors ${
+            isFullscreen
+              ? "bg-white text-black hover:bg-gray-200"
+              : "bg-black text-white hover:bg-gray-800"
+          }`}
+        >
+          {isFullscreen ? (
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M9 3H5a2 2 0 0 0-2 2v4" />
+              <path d="M15 3h4a2 2 0 0 1 2 2v4" />
+              <path d="M9 21H5a2 2 0 0 1-2-2v-4" />
+              <path d="M15 21h4a2 2 0 0 0 2-2v-4" />
+            </svg>
+          ) : (
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3" />
+              <path d="M16 3h3a2 2 0 0 1 2 2v3" />
+              <path d="M8 21H5a2 2 0 0 1-2-2v-3" />
+              <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
+            </svg>
+          )}
+          {isFullscreen ? "Exit fullscreen" : "Fullscreen"}
+        </button>
+
+        <button
+          onClick={() => setHandTrackingEnabled((v) => !v)}
+          aria-label={handTrackingEnabled ? "Handtracker uitzetten" : "Handtracker aanzetten"}
+          className={`flex items-center gap-2 px-5 py-2 text-xs rounded transition-colors ${
+            handTrackingEnabled
+              ? "bg-green-600 text-white hover:bg-green-700"
+              : isFullscreen
+                ? "bg-white text-black hover:bg-gray-200"
+                : "bg-black text-white hover:bg-gray-800"
+          }`}
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M18 11V6a2 2 0 0 0-4 0v5" />
+            <path d="M14 10V4a2 2 0 0 0-4 0v6" />
+            <path d="M10 10.5V6a2 2 0 0 0-4 0v8" />
+            <path d="M6 14v-2a2 2 0 0 0-4 0v3a8 8 0 0 0 8 8h2a8 8 0 0 0 8-8v-3a2 2 0 0 0-4 0v2" />
+          </svg>
+          {handTrackingEnabled ? "Handtracker aan" : "Handtracker"}
         </button>
       </div>
 
+      {/* GRID VIEW OVERLAY — zoals bij Issuu */}
+      {showGridView && (
+        <div className="fixed inset-0 z-50 bg-black/90 overflow-y-auto p-6">
+          <button
+            onClick={() => setShowGridView(false)}
+            aria-label="Sluiten"
+            className="fixed top-4 right-4 z-10 text-white text-2xl w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded transition-colors"
+          >
+            ✕
+          </button>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 max-w-6xl mx-auto pt-10">
+            {pages.map((page, idx) => (
+              <button
+                key={page.id}
+                onClick={() => goToPage(idx)}
+                aria-label={idx === 0 ? "Ga naar cover" : `Ga naar pagina ${idx}`}
+                className="relative bg-white rounded shadow overflow-hidden hover:ring-2 hover:ring-white transition-all"
+                style={{ width: "140px", height: "196px" }}
+              >
+                <div
+                  style={{
+                    width: "500px",
+                    height: "700px",
+                    transform: "scale(0.28)",
+                    transformOrigin: "top left",
+                    pointerEvents: "none",
+                  }}
+                >
+                  {page.content}
+                </div>
+                <span className="absolute bottom-1 right-1 bg-black/70 text-white text-[10px] px-1.5 py-0.5 rounded">
+                  {idx === 0 ? "Cover" : idx}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Verborgen bronpaginas voor PDF-export */}
       <div style={{ position: "fixed", top: "-9999px", left: "-9999px", pointerEvents: "none", zIndex: -1 }}>
-        {pages.map((page, idx) => (
-          <div
-            key={page.id}
-            id={`pdf-page-${idx}`}
-            style={{ width: "500px", height: "700px", background: "white", overflow: "hidden", position: "relative" }}
-          >
-            {page.content}
-          </div>
-        ))}
+        {pages.map((page, idx) => {
+          const footer = pdfFooters[idx];
+          return (
+            <div
+              key={page.id}
+              id={`pdf-page-${idx}`}
+              style={{ width: "500px", height: "700px", background: "white", overflow: "hidden", position: "relative" }}
+            >
+              <div style={{ width: "100%", height: footer ? "calc(100% - 22px)" : "100%", overflow: "hidden" }}>
+                {page.content}
+              </div>
+              {footer && (
+                <div
+                  style={{
+                    width: "100%",
+                    height: "22px",
+                    display: "flex",
+                    alignItems: "center",
+                    [footer.align === "left" ? "justifyContent" : "justifyContent"]:
+                      footer.align === "left" ? "flex-start" : "flex-end",
+                    paddingLeft: footer.align === "left" ? "12px" : undefined,
+                    paddingRight: footer.align === "right" ? "12px" : undefined,
+                    fontSize: "8px",
+                    letterSpacing: "0.2em",
+                    textTransform: "uppercase",
+                    color: "#9ca3af",
+                  }}
+                >
+                  {footer.text}
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
 
     </div>
   );
 }
+
