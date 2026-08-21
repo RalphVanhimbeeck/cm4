@@ -1,0 +1,48 @@
+<svg width="1200" height="1600" viewBox="0 0 1200 1600" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
+  <stop offset="100%" stop-color="#000000" stop-opacity="0.55"/>
+</linearGradient>
+<radialGradient id="glow35" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6b7280" stop-opacity="0.41090555560144193"/>
+      <stop offset="60%" stop-color="#6b7280" stop-opacity="0.144"/>
+      <stop offset="100%" stop-color="#6b7280" stop-opacity="0"/>
+    </radialGradient>
+<radialGradient id="glow36" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6b7280" stop-opacity="0.352743590529243"/>
+      <stop offset="60%" stop-color="#6b7280" stop-opacity="0.123"/>
+      <stop offset="100%" stop-color="#6b7280" stop-opacity="0"/>
+    </radialGradient>
+<radialGradient id="glow37" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6b7280" stop-opacity="0.381087181030221"/>
+      <stop offset="60%" stop-color="#6b7280" stop-opacity="0.133"/>
+      <stop offset="100%" stop-color="#6b7280" stop-opacity="0"/>
+    </radialGradient>
+<radialGradient id="glow38" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#b400ff" stop-opacity="0.24198322825641183"/>
+      <stop offset="60%" stop-color="#b400ff" stop-opacity="0.085"/>
+      <stop offset="100%" stop-color="#b400ff" stop-opacity="0"/>
+    </radialGradient>
+<radialGradient id="glow39" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#b400ff" stop-opacity="0.22527430451119015"/>
+      <stop offset="60%" stop-color="#b400ff" stop-opacity="0.079"/>
+      <stop offset="100%" stop-color="#b400ff" stop-opacity="0"/>
+    </radialGradient>
+</defs>
+<rect width="1200" height="1600" fill="#050810"/>
+<circle cx="108" cy="1521" r="250" fill="url(#glow35)"/>
+<circle cx="1009" cy="1195" r="280" fill="url(#glow36)"/>
+<circle cx="866" cy="1545" r="353" fill="url(#glow37)"/>
+<circle cx="232" cy="258" r="284" fill="url(#glow38)"/>
+<circle cx="184" cy="659" r="282" fill="url(#glow39)"/>
+<path d="M 708,672 L 728,779 L 629,775 L 565,794 L 474,777 L 473,672 L 528,612 L 559,529 L 644,517 L 688,598 L 725,672 Z" fill="none" stroke="#cbd5e1" stroke-width="1.6" opacity="0.50"/>
+<path d="M 810,672 L 736,785 L 641,819 L 537,894 L 445,801 L 463,672 L 456,552 L 534,440 L 642,524 L 716,575 L 815,672 Z" fill="none" stroke="#cdd7e2" stroke-width="1.6" opacity="0.45"/>
+<path d="M 853,672 L 751,798 L 667,908 L 519,959 L 444,802 L 393,672 L 386,493 L 529,422 L 655,479 L 804,502 L 860,672 Z" fill="none" stroke="#d0d9e4" stroke-width="1.6" opacity="0.40"/>
+<path d="M 824,672 L 811,849 L 703,1035 L 518,962 L 427,816 L 281,672 L 344,458 L 535,443 L 689,358 L 868,448 L 830,672 Z" fill="none" stroke="#d2dbe5" stroke-width="1.6" opacity="0.34"/>
+<path d="M 855,672 L 914,934 L 711,1065 L 521,953 L 320,906 L 218,672 L 368,478 L 504,333 L 722,241 L 865,451 L 872,672 Z" fill="none" stroke="#d5dde7" stroke-width="1.6" opacity="0.29"/>
+<path d="M 995,672 L 963,975 L 695,1008 L 493,1051 L 224,986 L 236,672 L 350,463 L 462,183 L 725,229 L 835,476 L 1002,672 Z" fill="none" stroke="#d8dfe8" stroke-width="1.6" opacity="0.24"/>
+<path d="M 1130,672 L 924,943 L 708,1053 L 438,1245 L 213,995 L 254,672 L 232,364 L 442,111 L 713,271 L 926,400 L 1135,672 Z" fill="none" stroke="#dae1ea" stroke-width="1.6" opacity="0.18"/>
+<path d="M 1108,672 L 913,933 L 758,1230 L 424,1295 L 275,944 L 133,672 L 121,272 L 458,169 L 721,244 L 1075,275 L 1114,672 Z" fill="none" stroke="#dde3eb" stroke-width="1.6" opacity="0.13"/>
+<path d="M 1043,672 L 1015,1018 L 805,1399 L 446,1217 L 235,977 L -24,672 L 125,275 L 469,209 L 780,34 L 1107,249 L 1041,672 Z" fill="none" stroke="#dfe5ed" stroke-width="1.6" opacity="0.08"/><rect width="1200" height="1600" fill="url(#fade)"/>
+</svg>
