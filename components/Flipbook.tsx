@@ -11,6 +11,33 @@ type Page = {
 
 export const printPages: React.ReactNode[] = [];
 
+// Klikbare regel in de inhoudsopgave — springt naar de opgegeven pagina-index
+// via een globale bridge-functie die de Flipbook-component instelt (zie useEffect
+// met window.__hallucinateGoToPage hieronder), omdat de statische `pages`-array
+// buiten de component staat en geen directe toegang heeft tot component-state.
+function TocEntry({
+  number,
+  title,
+  desc,
+  pageIdx,
+}: {
+  number: string;
+  title: string;
+  desc: string;
+  pageIdx: number;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={() => (window as any).__hallucinateGoToPage?.(pageIdx)}
+      className="block text-left w-full mb-3 last:mb-0 cursor-pointer hover:opacity-70 transition-opacity"
+    >
+      <strong className="text-white">{number} — {title}</strong><br />
+      {desc}
+    </button>
+  );
+}
+
 /* =========================
    THEMA-OPENER & FOTO-QUOTE
 ========================= */
@@ -129,8 +156,8 @@ const pages: Page[] = [
     id: "page-1",
     content: (
       <div className="flex w-full h-full items-center justify-center">
-        <div className="bg-gray-100 rounded p-3 w-3/4">
-          <p className="text-[2.7cqw] text-gray-500 leading-snug">
+        <div className="rounded p-3 w-full h-full flex items-center justify-center overflow-hidden" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+          <p className="text-[3.0cqw] text-white leading-snug">
             Toen ik aan dit project begon, dacht ik dat ik een magazine ging maken over één kunstenaar. Over Refik Anadol, over Machine Hallucinations, over een machine die droomt in data.
             <br /><br />
             Grafisch ontwerp wordt traditioneel geassocieerd met het statische beeld: een poster, een pagina, een foto binnen een vast kader. Maar naarmate ik dieper in mijn eigen onderzoek dook, merkte ik dat digitale media die relatie volledig veranderen. Een beeld kan bewegen, reageren op data, reageren op een gebruiker, of nieuwe versies van zichzelf genereren.
@@ -151,19 +178,14 @@ const pages: Page[] = [
     id: "page-2",
     content: (
       <div className="flex w-full h-full items-center justify-center">
-        <div className="bg-gray-100 rounded p-4 w-3/4">
-          <p className="text-[3.6cqw] text-gray-500 leading-relaxed">
-            <strong className="text-gray-600">01 — Sound Design</strong><br />
-            Geluid introduceert tijd, ritme en atmosfeer.<br /><br />
-            <strong className="text-gray-600">02 — Data-driven Objecten</strong><br />
-            Data en algoritmes introduceren systemen en generatie.<br /><br />
-            <strong className="text-gray-600">03 — Tijd &amp; Ruimte</strong><br />
-            Beweging laat het beeld bestaan buiten het kader.<br /><br />
-            <strong className="text-gray-600">04 — Interactie</strong><br />
-            De kijker krijgt invloed op de ervaring.<br /><br />
-            <strong className="text-gray-600">05 — Sequentie</strong><br />
-            Toestanden verbinden zich tot één proces.
-          </p>
+        <div className="rounded p-4 w-full h-full flex items-center justify-center overflow-hidden" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+          <div className="text-[3.6cqw] text-white leading-relaxed">
+            <TocEntry number="01" title="Sound Design" desc="Geluid introduceert tijd, ritme en atmosfeer." pageIdx={4} />
+            <TocEntry number="02" title="Data-driven Objecten" desc="Data en algoritmes introduceren systemen en generatie." pageIdx={9} />
+            <TocEntry number="03" title="Tijd & Ruimte" desc="Beweging laat het beeld bestaan buiten het kader." pageIdx={14} />
+            <TocEntry number="04" title="Interactie" desc="De kijker krijgt invloed op de ervaring." pageIdx={18} />
+            <TocEntry number="05" title="Sequentie" desc="Toestanden verbinden zich tot één proces." pageIdx={22} />
+          </div>
         </div>
       </div>
     ),
@@ -185,8 +207,8 @@ const pages: Page[] = [
         <div className="flex-1 rounded overflow-hidden">
           <img src="/sounddesign1.jpeg" alt="Sound Design 1" loading="lazy" className="w-full h-full object-cover" />
         </div>
-        <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-3 overflow-hidden">
-          <p className="text-[3.0cqw] text-gray-500 leading-relaxed">
+        <div className="flex-1 rounded flex items-start justify-start p-3 overflow-hidden" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+          <p className="text-[3.0cqw] text-white leading-relaxed">
           <b>Van geluid als effect naar geluid als ruimtelijk materiaal</b>
           <br></br>
           <br />
@@ -206,8 +228,8 @@ const pages: Page[] = [
     content: (
       <div className="flex flex-col w-full h-full gap-2 min-h-0">
         <div className="flex flex-1 gap-2 min-h-0">
-          <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-2 overflow-hidden min-h-0">
-            <p className="text-[3.0cqw] text-gray-500 leading-snug">
+          <div className="flex-1 rounded flex items-start justify-start p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+            <p className="text-[3.0cqw] text-white leading-snug">
               Hiermee kan geluid worden opgebouwd uit elektronische signalen.
               Door verschillende golfvormen en parameters te combineren, kan een eenvoudige klank veranderen in een complex geluid. 
               Ik zag hierin een duidelijke vergelijking met grafisch ontwerp: een ontwerper kan met eenvoudige vormen een complexe compositie maken, terwijl een sound designer hetzelfde doet met klanken.
@@ -219,15 +241,15 @@ const pages: Page[] = [
           </div>
         </div>
         <div className="flex flex-1 gap-2 min-h-0">
-          <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-2 overflow-hidden min-h-0">
-            <p className="text-[3.0cqw] text-gray-500 leading-snug">
+          <div className="flex-1 rounded flex items-start justify-start p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+            <p className="text-[3.0cqw] text-white leading-snug">
             Een geluid kan veranderen in volume, toonhoogte of frequentie.
             Het kan langzaam opbouwen, verdwijnen of steeds opnieuw veranderen. Hierdoor wordt geluid een bewegend materiaal. Dit sluit meteen aan bij mijn onderzoek naar tijd en sequentie.
             Mijn onderzoek ging daarnaast verder dan elektronische geluiden. Met field recording kunnen geluiden uit de echte wereld worden opgenomen en opnieuw gebruikt. 
             </p>
           </div>
-          <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-2 overflow-hidden min-h-0">
-            <p className="text-[3.0cqw] text-gray-500 leading-snug">
+          <div className="flex-1 rounded flex items-start justify-start p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+            <p className="text-[3.0cqw] text-white leading-snug">
             Natuur, steden, machines en menselijke activiteiten worden zo onderdeel van een nieuwe compositie. Chris Watson is hier een interessant voorbeeld van. Zijn werk laat zien dat een omgeving niet alleen iets is om naar te kijken, maar ook iets om bewust naar te luisteren.
             Een andere interessante link tussen geluid en grafisch ontwerp vond ik in de visual score. Hierbij worden muzikale ideeën voorgesteld met lijnen, vormen en symbolen. 
             </p>
@@ -241,32 +263,28 @@ const pages: Page[] = [
   {
     id: "page-6",
     content: (
-      <div className="flex flex-col w-full h-full gap-2 min-h-0">
-        <div className="flex flex-1 gap-2 min-h-0">
-          <div className="flex-1 bg-gray-100 rounded flex items-center p-2 overflow-hidden min-h-0">
-            <p className="text-[3.0cqw] text-gray-500 leading-snug">
-            Een lijn kan bijvoorbeeld een verandering in toonhoogte aangeven, terwijl de positie of grootte van een element iets kan zeggen over timing of volume. Muziek wordt zo bijna een grafische compositie.
-            Ook algoritmes kunnen muziek genereren. De maker hoeft niet iedere noot zelf te bepalen, maar kan regels vastleggen waarbinnen het systeem werkt. 
-            </p>
-          </div>
-          <div className="flex-1 bg-gray-100 rounded flex items-center p-2 overflow-hidden min-h-0">
-            <p className="text-[3.0cqw] text-gray-500 leading-snug">
-            Een voorbeeld hiervan is de Dice Music van Mozart, waarbij muzikale fragmenten volgens bepaalde regels willekeurig gecombineerd worden.
-            Van daaruit kwam ik bij data sonification: het omzetten van data naar geluid. Gegevens kunnen bijvoorbeeld worden vertaald naar toonhoogte, volume of ritme. Een Geigerteller doet dit op een eenvoudige manier door straling hoorbaar te maken.
-            </p>
-          </div>
+      <div className="grid grid-cols-2 grid-rows-2 w-full h-full gap-2 min-h-0">
+        <div className="rounded flex items-center p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+          <p className="text-[3.0cqw] text-white leading-snug">
+          Een lijn kan bijvoorbeeld een verandering in toonhoogte aangeven, terwijl de positie of grootte van een element iets kan zeggen over timing of volume. Muziek wordt zo bijna een grafische compositie.
+          Ook algoritmes kunnen muziek genereren. De maker hoeft niet iedere noot zelf te bepalen, maar kan regels vastleggen waarbinnen het systeem werkt. 
+          </p>
         </div>
-        <div className="flex flex-1 gap-2 min-h-0">
-          <div className="flex-1 bg-gray-100 rounded flex items-center p-2 overflow-hidden min-h-0">
-            <p className="text-[3.0cqw] text-gray-500 leading-snug">
-            Dit roept een interessante vraag op: als data zowel zichtbaar als hoorbaar kan worden gemaakt, waarom zouden we data dan altijd als een grafiek moeten bekijken?
-            Bij Refik Anadol wordt die vraag bijzonder interessant. In Machine Hallucinations is geluid geen achtergrondmuziek, maar onderdeel van de volledige ervaring. 
-            
-            </p>
-          </div>
-          <div className="flex-1 rounded overflow-hidden min-h-0">
-            <img src="/sounddesign1.jpeg" alt="Sound Design 1" loading="lazy" className="w-full h-full object-cover" />
-          </div>
+        <div className="rounded flex items-center p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+          <p className="text-[3.0cqw] text-white leading-snug">
+          Een voorbeeld hiervan is de Dice Music van Mozart, waarbij muzikale fragmenten volgens bepaalde regels willekeurig gecombineerd worden.
+          Van daaruit kwam ik bij data sonification: het omzetten van data naar geluid. Gegevens kunnen bijvoorbeeld worden vertaald naar toonhoogte, volume of ritme. Een Geigerteller doet dit op een eenvoudige manier door straling hoorbaar te maken.
+          </p>
+        </div>
+        <div className="rounded flex items-center p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+          <p className="text-[3.0cqw] text-white leading-snug">
+          Dit roept een interessante vraag op: als data zowel zichtbaar als hoorbaar kan worden gemaakt, waarom zouden we data dan altijd als een grafiek moeten bekijken?
+          Bij Refik Anadol wordt die vraag bijzonder interessant. In Machine Hallucinations is geluid geen achtergrondmuziek, maar onderdeel van de volledige ervaring. 
+          
+          </p>
+        </div>
+        <div className="rounded overflow-hidden min-h-0">
+          <img src="/soundwaves.jpeg" alt="Sound Design 1" loading="lazy" className="w-full h-full object-cover" />
         </div>
       </div>
     ),
@@ -277,14 +295,14 @@ const pages: Page[] = [
     id: "page-7",
     content: (
       <div className="flex flex-col w-full h-full gap-2 min-h-0">
-        <div className="flex-1 bg-gray-100 rounded flex items-center p-3 overflow-hidden min-h-0">
-          <p className="text-[3.0cqw] text-gray-500 leading-snug">
+        <div className="flex-1 rounded flex items-center p-3 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+          <p className="text-[3.0cqw] text-white leading-snug">
           Digitale texturen, lage frequenties, ambient geluiden en andere klanken vullen samen de ruimte. De bezoeker staat daardoor niet buiten het werk, maar bevindt zich er middenin.
           De beelden en geluiden blijven voortdurend veranderen. Net zoals een synthesizerklank kan evolueren, verandert ook de soundscape mee met de visuele omgeving.
           Mijn belangrijkste inzicht uit dit onderzoek is daarom dat geluid niet alleen iets is dat een beeld ondersteunt. Het kan zelf materiaal, structuur en ruimte worden.          </p>
         </div>
         <div className="flex-1 rounded overflow-hidden min-h-0">
-          <img src="/sounddesign2.jpeg" alt="Sound Design 2" loading="lazy" className="w-full h-full object-cover" />
+          <img src="/soundwaves-2.webp" alt="Sound Design 2" loading="lazy" className="w-full h-full object-cover" />
         </div>
       </div>
     ),
@@ -303,8 +321,8 @@ const pages: Page[] = [
     id: "page-9",
     content: (
       <div className="flex w-full h-full items-center justify-center">
-        <div className="bg-gray-100 rounded p-4 w-[90%]">
-          <p className="text-[3.0cqw] text-gray-500 leading-snug">
+        <div className="rounded p-4 w-full h-full flex items-center justify-center overflow-hidden" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+          <p className="text-[3.0cqw] text-white leading-snug">
           <b>Wanneer de designer niet meer ieder beeld zelf maakt</b>
           <br />
           <br />
@@ -344,14 +362,14 @@ const pages: Page[] = [
           }}
         />
         <div className="flex-[2] flex flex-row gap-2 pt-2 min-h-0 overflow-hidden">
-          <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-2 overflow-hidden min-h-0">
-            <p className="text-[3.0cqw] text-gray-500 leading-snug">
+          <div className="flex-1 rounded flex items-start justify-start p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+            <p className="text-[2.9cqw] text-white leading-snug">
             Dat werd nog duidelijker tijdens mijn onderzoek naar code poetry. Hierbij wordt de programmeercode zelf onderdeel van het kunstwerk. De code moet dus niet alleen goed werken, maar kan ook visueel of inhoudelijk betekenis krijgen.
             Daaruit kwam voor mij een belangrijk inzicht: 
             </p>          
             </div>
-          <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-2 overflow-hidden min-h-0">
-            <p className="text-[3.0cqw] text-gray-500 leading-snug">
+          <div className="flex-1 rounded flex items-start justify-start p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+            <p className="text-[2.9cqw] text-white leading-snug">
             code hoeft niet alleen het gereedschap te zijn waarmee je een ontwerp maakt. Code kan zelf ontwerpmateriaal worden.
             Ook algoritmes kunnen op die manier gebruikt worden. Sorting algorithms zijn bijvoorbeeld gemaakt om gegevens te ordenen. Wanneer je zo'n proces visueel maakt, ontstaat er
         </p>            
@@ -376,15 +394,15 @@ const pages: Page[] = [
           }}
         />
         <div className="flex-[2] flex flex-row gap-2 pt-2 min-h-0 overflow-hidden">
-          <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-2 overflow-hidden min-h-0">
-            <p className="text-[3.0cqw] text-gray-500 leading-snug">
+          <div className="flex-1 rounded flex items-start justify-start p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+            <p className="text-[2.9cqw] text-white leading-snug">
             echter een soort animatie. Je ziet de elementen stap voor stap veranderen totdat ze geordend zijn.
             Een technisch proces wordt zo een visuele compositie.
             Hetzelfde gebeurt bij algoritmische muziek. Een computer kan muzikale fragmenten selecteren en combineren volgens bepaalde regels.
             </p>
           </div>
-          <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-2 overflow-hidden min-h-0">
-            <p className="text-[3.0cqw] text-gray-500 leading-snug">
+          <div className="flex-1 rounded flex items-start justify-start p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+            <p className="text-[2.9cqw] text-white leading-snug">
             De maker bepaalt niet iedere afzonderlijke uitkomst, maar bepaalt het systeem.
              <br /><br />
              Hierdoor wordt duidelijk dat generatieve vormgeving niet pas met AI is begonnen. Het idee dat een systeem zelf resultaten kan produceren bestaat al veel langer.
@@ -400,8 +418,8 @@ const pages: Page[] = [
     id: "page-12",
     content: (
       <div className="flex flex-col w-full h-full gap-2 min-h-0">
-        <div className="flex-1 bg-gray-100 rounded flex items-center p-3 overflow-hidden min-h-0">
-          <p className="text-[3.0cqw] text-gray-500 leading-snug">
+        <div className="flex-1 rounded flex items-center p-3 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+          <p className="text-[3.0cqw] text-white leading-snug">
           Bij Refik Anadol wordt dit principe op een enorme schaal toegepast. Hij gebruikt grote hoeveelheden data als artistiek materiaal. Foto's, archieven, natuurbeelden en andere gegevens worden verzameld en verwerkt met machine learning.
           Data wordt bij Anadol bijna zoals verf gebruikt door een schilder: als grondstof voor iets nieuws.
           Een belangrijk begrip hierbij is latent space. Binnen een AI-model worden relaties en overeenkomsten tussen beelden opgeslagen. De machine kan vervolgens door deze abstracte ruimte bewegen en nieuwe visuele combinaties creëren.
@@ -410,8 +428,8 @@ const pages: Page[] = [
           
           </p>
         </div>
-        <div className="flex-1 bg-gray-100 rounded flex items-center p-3 overflow-hidden min-h-0">
-          <p className="text-[3.0cqw] text-gray-500 leading-snug">
+        <div className="flex-1 rounded flex items-center p-3 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+          <p className="text-[3.0cqw] text-white leading-snug">
           Dit roept natuurlijk ook vragen op over auteurschap. Wie heeft zo'n beeld gemaakt? De designer? De programmeur? De dataset? Het algoritme? Of de machine?
           Voor mij ligt het antwoord ergens tussen deze verschillende elementen. De designer bepaalt het kader en de regels, maar heeft niet noodzakelijk controle over ieder detail van het eindresultaat.
           Ook mijn eigen magazine sluit hierop aan. Ik ontwerp niet alleen de pagina's, maar ook het systeem erachter. JavaScript en CSS bepalen hoe de pagina's worden opgebouwd, hoe de navigatie werkt en hoe de gebruiker door het magazine beweegt.
@@ -435,33 +453,29 @@ const pages: Page[] = [
   {
     id: "page-14",
     content: (
-      <div className="flex flex-col w-full h-full gap-2 min-h-0">
-        <div className="flex flex-1 gap-2 min-h-0">
-          <div className="flex-1 rounded overflow-hidden min-h-0">
-            <img src="/GrafiekInTijd&Ruimte1.jpeg" alt="Grafiek in tijd en ruimte 1" loading="lazy" className="w-full h-full object-cover" />
-          </div>
-          <div className="flex-1 bg-gray-100 rounded flex items-center p-2 overflow-hidden min-h-0">
-            <p className="text-[3.0cqw] text-gray-500 leading-snug">
-            <b>Wanneer grafisch ontwerp niet meer stilstaat</b>
-            <br /><br />
-            Grafisch ontwerp wordt vaak gekoppeld aan het platte vlak. Een poster staat op papier, een boek op een pagina en een afbeelding op een scherm. Maar door animatie, film en digitale technologie is grafisch ontwerp steeds minder statisch geworden.
-            Mijn onderzoek naar kinetic typography was hierbij een belangrijk vertrekpunt. 
-
-            </p>
-          </div>
+      <div className="grid grid-cols-2 grid-rows-2 w-full h-full gap-2 min-h-0">
+        <div className="rounded overflow-hidden min-h-0">
+          <img src="/GrafiekInTijd&Ruimte1.jpeg" alt="Grafiek in tijd en ruimte 1" loading="lazy" className="w-full h-full object-cover" />
         </div>
-        <div className="flex flex-1 gap-2 min-h-0">
-          <div className="flex-1 bg-gray-100 rounded flex items-center p-2 overflow-hidden min-h-0">
-            <p className="text-[3.0cqw] text-gray-500 leading-snug">
-            Letters en woorden kunnen bewegen, groter worden, vervormen of verdwijnen. Tekst wordt daardoor niet alleen gelezen, maar ook ervaren als beweging.
-            Een woord kan bijvoorbeeld versnellen wanneer het over snelheid gaat, of langzaam verdwijnen wanneer je een gevoel van rust wilt creëren. De beweging wordt zo een extra laag van typografie.
-            De designer ontwerpt daardoor niet alleen hoe iets eruitziet, maar ook hoe het zich door de tijd gedraagt.
+        <div className="rounded flex items-center p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+          <p className="text-[3.0cqw] text-white leading-snug">
+          <b>Wanneer grafisch ontwerp niet meer stilstaat</b>
+          <br /><br />
+          Grafisch ontwerp wordt vaak gekoppeld aan het platte vlak. Een poster staat op papier, een boek op een pagina en een afbeelding op een scherm. Maar door animatie, film en digitale technologie is grafisch ontwerp steeds minder statisch geworden.
+          Mijn onderzoek naar kinetic typography was hierbij een belangrijk vertrekpunt. 
 
-            </p>
-          </div>
-          <div className="flex-1 rounded overflow-hidden min-h-0">
-            <img src="/GrafiekInTijd&Ruimte2.jpeg" alt="Grafiek in tijd en ruimte 2" loading="lazy" className="w-full h-full object-cover" />
-          </div>
+          </p>
+        </div>
+        <div className="rounded flex items-center p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+          <p className="text-[3.0cqw] text-white leading-snug">
+          Letters en woorden kunnen bewegen, groter worden, vervormen of verdwijnen. Tekst wordt daardoor niet alleen gelezen, maar ook ervaren als beweging.
+          Een woord kan bijvoorbeeld versnellen wanneer het over snelheid gaat, of langzaam verdwijnen wanneer je een gevoel van rust wilt creëren. De beweging wordt zo een extra laag van typografie.
+          De designer ontwerpt daardoor niet alleen hoe iets eruitziet, maar ook hoe het zich door de tijd gedraagt.
+
+          </p>
+        </div>
+        <div className="rounded overflow-hidden min-h-0">
+          <img src="/giter2.jpeg" alt="Grafiek in tijd en ruimte 2" loading="lazy" className="w-full h-full object-cover" />
         </div>
       </div>
     ),
@@ -474,17 +488,17 @@ const pages: Page[] = [
       <div className="flex flex-col w-full h-full gap-1.5 min-h-0">
         <div className="flex gap-1.5 flex-[1] min-h-0">
           <div className="flex-1 rounded overflow-hidden min-h-0">
-            <img src="/GrafiekInTijd&Ruimte3.jpeg" alt="Grafiek in tijd en ruimte 3" loading="lazy" className="w-full h-full object-cover" />
+            <img src="/GITER.jpeg" alt="Grafiek in tijd en ruimte 3" loading="lazy" className="w-full h-full object-cover" />
           </div>
-          <div className="flex-1 bg-gray-100 rounded flex items-center p-1.5 overflow-hidden min-h-0">
-            <p className="text-[3.0cqw] text-gray-500 leading-snug">
+          <div className="flex-1 rounded flex items-center p-1.5 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+            <p className="text-[3.0cqw] text-white leading-snug">
             Dat zorgt voor een heel andere manier van kijken. Een poster heeft één vaste toestand, terwijl een animatie honderden verschillende toestanden kan hebben. De overgang tussen die toestanden wordt daardoor net zo belangrijk als de beelden zelf.
             </p>
           </div>
         </div>
         <div className="flex gap-1.5 flex-[1.5] min-h-0">
-          <div className="flex-1 bg-gray-100 rounded flex items-center p-1.5 overflow-hidden min-h-0">
-            <p className="text-[3.0cqw] text-gray-500 leading-snug">
+          <div className="flex-1 rounded flex items-center p-1.5 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+            <p className="text-[3.0cqw] text-white leading-snug">
             Dit zie ik ook terug in mijn eigen digitale magazine. Wanneer je van de ene pagina naar de andere gaat, zie je niet alleen twee afzonderlijke pagina's. Door de flip-animatie zie je de ene pagina veranderen in de andere.
             De overgang zelf wordt onderdeel van het ontwerp.
             Van daaruit kwam ik bij een tweede dimensie: ruimte.
@@ -498,8 +512,8 @@ const pages: Page[] = [
           <div className="flex-1 rounded overflow-hidden min-h-0">
             <img src="/GrafiekInTijd&Ruimte5.jpeg" alt="Grafiek in tijd en ruimte 5" loading="lazy" className="w-full h-full object-cover" />
           </div>
-          <div className="flex-1 bg-gray-100 rounded flex items-center p-1.5 overflow-hidden min-h-0">
-            <p className="text-[3.0cqw] text-gray-500 leading-snug">
+          <div className="flex-1 rounded flex items-center p-1.5 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+            <p className="text-[3.0cqw] text-white leading-snug">
             Projection mapping laat bijvoorbeeld zien hoe grafische beelden op gebouwen en andere oppervlakken kunnen worden geprojecteerd. De fysieke omgeving wordt dan onderdeel van het ontwerp.
             Het canvas is niet langer alleen een scherm of een pagina, maar een volledige ruimte.
             </p>
@@ -514,8 +528,8 @@ const pages: Page[] = [
     id: "page-16",
     content: (
       <div className="flex flex-row w-full h-full gap-3">
-        <div className="flex-1 bg-gray-100 rounded flex items-center p-3 overflow-hidden">
-          <p className="text-[3.0cqw] text-gray-500 leading-snug">
+        <div className="flex-1 rounded flex items-center p-3 overflow-hidden" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+          <p className="text-[3.0cqw] text-white leading-snug">
           Bij Refik Anadol wordt dit heel duidelijk. In Machine Hallucinations worden grote oppervlakken gebruikt om data, licht, beweging en geluid samen te brengen. 
           De bezoeker kijkt niet gewoon naar een scherm, maar bevindt zich midden in de installatie.
           <br /><br />
@@ -526,8 +540,8 @@ const pages: Page[] = [
 
           </p>
         </div>
-        <div className="flex-1 bg-gray-100 rounded flex items-center p-3 overflow-hidden">
-          <p className="text-[3.0cqw] text-gray-500 leading-snug">
+        <div className="flex-1 rounded flex items-center p-3 overflow-hidden" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+          <p className="text-[3.0cqw] text-white leading-snug">
           Ook de schaal heeft invloed op de ervaring. Een klein beeld op een laptop voelt anders dan een projectie die een volledige muur vult. Hoe groter het beeld, hoe meer je eigen lichaam onderdeel wordt van de ervaring.
           <br /><br />
           Dit sluit aan bij immersive media. Hierbij gaat het niet meer alleen om naar een beeld kijken, maar om een volledige omgeving te creëren.
@@ -567,7 +581,7 @@ const pages: Page[] = [
               </div>
               <div className="flex flex-col gap-2 min-h-0" style={{ flex: "1 1 0" }}>
                 <div className="flex-1 rounded overflow-hidden min-h-0">
-                  <img src="/InteractieveInformatieStructuren2.jpg" alt="Interactieve Informatie Structuren 2" loading="lazy" className="w-full h-full object-cover" />
+                  <img src="/IIS2.jpeg" alt="Interactieve Informatie Structuren 2" loading="lazy" className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1 rounded overflow-hidden min-h-0">
                   <img src="/InteractieveInformatieStructuren3.jpg" alt="Interactieve Informatie Structuren 3" loading="lazy" className="w-full h-full object-cover" />
@@ -575,7 +589,7 @@ const pages: Page[] = [
               </div>
             </div>
             <div className="flex-1 rounded overflow-hidden min-h-0">
-              <img src="/InteractieveInformatieStructuren4.jpg" alt="Interactieve Informatie Structuren 4" loading="lazy" className="w-full h-full object-cover" />
+              <img src="/IIS.jpeg" alt="Interactieve Informatie Structuren 4" loading="lazy" className="w-full h-full object-cover" />
             </div>
           </div>
           <div className="flex-1 rounded overflow-hidden min-h-0">
@@ -593,8 +607,8 @@ const pages: Page[] = [
             <img src="/InteractieveInformatieStructuren10.webp" alt="Interactieve Informatie Structuren 10" loading="lazy" className="w-full h-full object-cover" />
           </div>
           <div className="flex flex-col gap-2 flex-1 min-h-0">
-            <div className="flex-1 rounded overflow-hidden min-h-0"><img src="/InteractieveInformatieStructuren11.jpeg" alt="Interactieve Informatie Structuren 11" loading="lazy" className="w-full h-full object-cover" /></div>
-            <div className="flex-1 rounded overflow-hidden min-h-0"><img src="/InteractieveInformatieStructuren12.jpg" alt="Interactieve Informatie Structuren 12" loading="lazy" className="w-full h-full object-cover" /></div>
+            <div className="flex-1 rounded overflow-hidden min-h-0"><img src="/IIS4.jpeg" alt="Interactieve Informatie Structuren 11" loading="lazy" className="w-full h-full object-cover" /></div>
+            <div className="flex-1 rounded overflow-hidden min-h-0"><img src="/IIS3.jpeg" alt="Interactieve Informatie Structuren 12" loading="lazy" className="w-full h-full object-cover" /></div>
           </div>
         </div>
       </div>
@@ -607,8 +621,8 @@ const pages: Page[] = [
     content: (
       <div className="flex flex-col w-full h-full gap-2 min-h-0">
         <div className="flex flex-1 gap-2 min-h-0">
-          <div className="flex-1 bg-gray-100 rounded flex items-center p-2 overflow-hidden min-h-0">
-            <p className="text-[2.9cqw] text-gray-500 leading-snug">
+          <div className="flex-1 rounded flex items-center p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+            <p className="text-[2.9cqw] text-white leading-snug">
             <b>Van informatie bekijken naar informatie ervaren</b>
             <br /><br />
             In traditionele grafische communicatie bepaalt de ontwerper meestal hoe informatie wordt aangeboden. Een boek heeft pagina's, een infographic heeft een vaste structuur en een website heeft een bepaalde navigatie.
@@ -618,8 +632,8 @@ const pages: Page[] = [
 
             </p>
           </div>
-          <div className="flex-1 bg-gray-100 rounded flex items-center p-2 overflow-hidden min-h-0">
-            <p className="text-[2.9cqw] text-gray-500 leading-snug">
+          <div className="flex-1 rounded flex items-center p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+            <p className="text-[2.9cqw] text-white leading-snug">
             Tijdens mijn onderzoek begon ik daarom na te denken over een andere vraag:
             Wat gebeurt er wanneer de gebruiker niet alleen informatie ontvangt, maar onderdeel wordt van het systeem?
             Een interactieve installatie kan bijvoorbeeld reageren op beweging, geluid, aanraking of de positie van een persoon. Hierdoor ontstaat een relatie tussen de gebruiker en het werk.
@@ -629,16 +643,16 @@ const pages: Page[] = [
           </div>
         </div>
         <div className="flex flex-1 gap-2 min-h-0">
-          <div className="flex-1 bg-gray-100 rounded flex items-center p-2 overflow-hidden min-h-0">
-            <p className="text-[2.9cqw] text-gray-500 leading-snug">
+          <div className="flex-1 rounded flex items-center p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+            <p className="text-[2.9cqw] text-white leading-snug">
             Hierbij wordt menselijke impact zichtbaar gemaakt door geluid te koppelen aan een visuele reactie. Wanneer geluid ontstaat, verschijnt een rode vorm of “bubble”.
             Een abstract idee wordt hierdoor iets wat je letterlijk kunt zien en ervaren.
             Dat vond ik interessant omdat informatie hier niet wordt uitgelegd met tekst of een grafiek. De informatie wordt een ervaring.
             Ook projecten zoals TeamLab, Rain Room, The Pool en The Treachery of Sanctuary werken met dit principe. 
             </p>
           </div>
-          <div className="flex-1 bg-gray-100 rounded flex items-center p-2 overflow-hidden min-h-0">
-            <p className="text-[2.9cqw] text-gray-500 leading-snug">
+          <div className="flex-1 rounded flex items-center p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+            <p className="text-[2.9cqw] text-white leading-snug">
             De bezoeker is niet alleen iemand die naar het kunstwerk kijkt, maar wordt onderdeel van hoe het werk functioneert.
             Hierdoor bestaat het kunstwerk eigenlijk pas volledig wanneer iemand ermee in contact komt.
             Ook mijn eigen digitale magazine heeft een eenvoudige vorm van deze interactie. De gebruiker kan door de pagina's bladeren, maar kan ook via het menu rechtstreeks naar een bepaald thema gaan.
@@ -656,8 +670,8 @@ const pages: Page[] = [
     id: "page-20",
     content: (
       <div className="flex w-full h-full items-center justify-center">
-        <div className="bg-gray-100 rounded p-4 w-[90%]">
-          <p className="text-[2.9cqw] text-gray-500 leading-snug">
+        <div className="rounded p-4 w-full h-full flex items-center justify-center overflow-hidden" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+          <p className="text-[2.9cqw] text-white leading-snug">
             Ik heb dit idee verder onderzocht met handtracking. Het doel was om pagina's niet alleen met knoppen te bedienen, maar ook met een fysieke handbeweging. Het omslaan van een digitale pagina wordt dan een lichamelijke handeling.
             <br /><br />
             De interface wordt hierdoor minder zichtbaar. Je hoeft niet meer na te denken over welke knop je moet indrukken. Je maakt gewoon een beweging met je hand en het systeem reageert daarop. De gebruiker wordt onderdeel van het systeem.
@@ -691,7 +705,7 @@ const pages: Page[] = [
     id: "page-22",
     content: (
       <PhotoQuote
-        src="/2021_Refik-Anadol_Machine-Hallucinations.jpg.webp"
+        src="/SGS.jpeg"
         alt="Sequentiële Grafische Systemen 1"
         quote="Het beeld is niet het eindresultaat."
       />
@@ -704,8 +718,8 @@ const pages: Page[] = [
     content: (
       <div className="flex flex-col w-full h-full gap-2 min-h-0">
         <div className="flex flex-1 gap-2 min-h-0">
-          <div className="flex-1 bg-gray-100 rounded flex items-center p-2 overflow-hidden min-h-0">
-            <p className="text-[2.9cqw] text-gray-500 leading-snug">
+          <div className="flex-1 rounded flex items-center p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+            <p className="text-[2.9cqw] text-white leading-snug">
             <b>Van afzonderlijke beelden naar een continu proces</b>
             <br /><br />
             Een grafisch ontwerp wordt vaak gezien als een verzameling losse beelden. Een poster is één beeld, een pagina één compositie en een illustratie heeft meestal een duidelijk eindpunt.
@@ -713,8 +727,8 @@ const pages: Page[] = [
             Dat noemen we een sequentieel systeem.
             </p>
           </div>
-          <div className="flex-1 bg-gray-100 rounded flex items-center p-2 overflow-hidden min-h-0">
-            <p className="text-[2.9cqw] text-gray-500 leading-snug">
+          <div className="flex-1 rounded flex items-center p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+            <p className="text-[2.9cqw] text-white leading-snug">
             Een sequentie ontstaat wanneer verschillende beelden, vormen of gebeurtenissen in een bepaalde volgorde worden ervaren. Dit kan een boek zijn, maar ook een film, animatie, website of interactieve installatie.
             Hierbij is niet alleen het beeld zelf belangrijk, maar vooral wat ervoor en erna gebeurt.
             Dat werd duidelijk tijdens mijn onderzoek naar kinetic typography. Een bewegende tekst bestaat niet uit één vast beeld. 
@@ -722,16 +736,16 @@ const pages: Page[] = [
           </div>
         </div>
         <div className="flex flex-1 gap-2 min-h-0">
-          <div className="flex-1 bg-gray-100 rounded flex items-center p-2 overflow-hidden min-h-0">
-            <p className="text-[2.9cqw] text-gray-500 leading-snug">
+          <div className="flex-1 rounded flex items-center p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+            <p className="text-[2.9cqw] text-white leading-snug">
             Letters kunnen groter worden, van plaats veranderen of verdwijnen.
             De betekenis zit daardoor niet alleen in het woord, maar ook in de verandering.
             Ook algoritmes werken sequentieel. Ze bestaan uit verschillende stappen die in een bepaalde volgorde worden uitgevoerd. Bij sorting algorithms kan je bijvoorbeeld zien hoe elementen één voor één worden verplaatst totdat ze gesorteerd zijn.
             Het eindresultaat is interessant, maar het proces ernaartoe misschien nog meer.
             </p>
           </div>
-          <div className="flex-1 bg-gray-100 rounded flex items-center p-2 overflow-hidden min-h-0">
-            <p className="text-[2.9cqw] text-gray-500 leading-snug">
+          <div className="flex-1 rounded flex items-center p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+            <p className="text-[2.9cqw] text-white leading-snug">
             Dit principe komt ook terug in algoritmische muziek. Een computer kan verschillende muzikale fragmenten selecteren en combineren volgens bepaalde regels. De volgorde van de noten bepaalt uiteindelijk hoe de compositie klinkt.
             Hierdoor begon ik een visueel ontwerp ook meer als een proces te zien. Een vorm kan ontstaan, veranderen en vervolgens opnieuw worden gebruikt om een volgende vorm te maken.
             </p>
@@ -746,7 +760,7 @@ const pages: Page[] = [
     id: "page-24",
     content: (
       <PhotoQuote
-        src="/GrafiekInTijd&Ruimte5.jpeg"
+        src="/2021_Refik-Anadol_Machine-Hallucinations.jpg.webp"
         alt="Sequentiële Grafische Systemen 2"
         quote="Van beeld naar systeem."
       />
@@ -759,33 +773,29 @@ const pages: Page[] = [
     id: "page-25",
     content: (
       <div className="flex w-full h-full items-center justify-center">
-        <div className="bg-gray-100 rounded p-3 w-4/4">
-          <p className="text-[2.8cqw] text-gray-500 leading-snug">
+        <div className="rounded p-3 w-full h-full flex items-center justify-center overflow-hidden" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+          <p className="text-[2.9cqw] text-white leading-snug">
           Bij Refik Anadol wordt dit heel duidelijk.
-          In Machine Hallucinations verschijnen de beelden niet als volledig afzonderlijke afbeeldingen. Ze vloeien voortdurend in elkaar over. Een vorm verandert in een andere, kleuren verschuiven en patronen groeien of verdwijnen.
-          <i>Het is dus niet simpelweg:</i>
+          In Machine Hallucinations verschijnen de beelden niet als volledig afzonderlijke afbeeldingen. 
+          Ze vloeien voortdurend in elkaar over. 
+          Een vorm verandert in een andere, kleuren verschuiven en patronen groeien of verdwijnen.
+          <br /><br />
+          <i>Het is dus niet simpelweg: </i>
           <b>beeld 1 → beeld 2 → beeld 3 </b>
            <i>maar eerder: </i>
           <b>beeld 1 → verandering → beeld 2 → verandering → beeld 3. </b>
+          <br /><br />
           De overgang is minstens zo belangrijk als het beeld zelf.
           Hierdoor ben ik een beeld gaan zien als een tijdelijke toestand. Het systeem bevindt zich even in een bepaalde vorm en verandert daarna verder.
           Ook mijn eigen magazine kan op deze manier bekeken worden.
           Een pagina is een toestand.
           De flip-animatie is de overgang.
+          <br /><br />
           De volgende pagina is de nieuwe toestand:
           <b> pagina A → flip → pagina B. </b>
           Hierdoor ontwerp ik niet alleen afzonderlijke pagina's, maar ook de relaties ertussen.
           Welke kleur komt terug? Hoe verandert de typografie? Wanneer krijgt de lezer veel informatie en wanneer juist weinig? Wanneer moet een pagina rustig zijn en wanneer mag het beeld intens worden?
-          Zo wordt het volledige magazine één compositie die zich stap voor stap ontvouwt.
-          Een belangrijk onderdeel hiervan is ritme. Ritme bestaat niet alleen in muziek. Ook visueel kan je een bepaald tempo creëren.
-          Een drukke pagina kan bijvoorbeeld gevolgd worden door een rustige pagina met veel witruimte. Een snelle animatie kan daarna overgaan in een langzaam beeld.
-          Mijn onderzoek naar sound design sluit hier opnieuw op aan. Ook geluid kan versnellen, vertragen, herhalen en veranderen. Beeld en geluid kunnen daardoor samen eenzelfde ritme creëren.
-          Een sequentie hoeft bovendien geen klassiek verhaal te vertellen. Bij film is de volgorde vaak bedoeld om een verhaal te tonen. Bij generatieve kunst kan de verandering veel abstracter zijn.
-          Bij Anadol hoeft de bezoeker bijvoorbeeld niet te weten welk beeld eerst kwam. Het belangrijkste is dat het systeem voortdurend in beweging blijft.
-          Dat bracht mij bij een van de belangrijkste inzichten uit mijn onderzoek: 
-          <i> De overgang kan zelf onderdeel worden van het ontwerp. </i>
-          Een vloeiende overgang kan rust geven. Een abrupte overgang kan spanning creëren. Herhaling kan ritme veroorzaken en verandering kan ontwikkeling suggereren.
-          De designer ontwerpt daardoor niet alleen objecten, maar ook de relaties tussen die objecten.
+          
 
           </p>
         </div>
@@ -793,7 +803,87 @@ const pages: Page[] = [
     ),
   },
 
-  // 27 — BACK COVER (weer los/solo — komt pas ná pagina 25)
+  // 27 — Page 26 — Sound Design (4 lege tekstvakken, later in te vullen)
+  {
+    id: "page-26",
+    content: (
+      <div className="flex flex-col w-full h-full gap-2 min-h-0">
+        <div className="flex flex-1 gap-2 min-h-0">
+          <div
+            className="flex-1 rounded flex items-center p-2 overflow-hidden min-h-0"
+            style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}
+          >
+            <p className="text-[2.9cqw] text-white leading-snug">
+            Zo wordt het volledige magazine één compositie die zich stap voor stap ontvouwt.
+          Een belangrijk onderdeel hiervan is ritme. Ritme bestaat niet alleen in muziek. Ook visueel kan je een bepaald tempo creëren.
+          Een drukke pagina kan bijvoorbeeld gevolgd worden door een rustige pagina met veel witruimte. Een snelle animatie kan daarna overgaan in een langzaam beeld.
+          
+          
+         
+            </p>
+          </div>
+          <div
+            className="flex-1 rounded flex items-center p-2 overflow-hidden min-h-0"
+            style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}
+          >
+            <p className="text-[2.9cqw] text-white leading-snug">
+            Mijn onderzoek naar sound design sluit hier opnieuw op aan. Ook geluid kan versnellen, vertragen, herhalen en veranderen. Beeld en geluid kunnen daardoor samen eenzelfde ritme creëren.
+            Een sequentie hoeft bovendien geen klassiek verhaal te vertellen. Bij film is de volgorde vaak bedoeld om een verhaal te tonen. 
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-1 gap-2 min-h-0">
+          <div
+            className="flex-1 rounded flex items-center p-2 overflow-hidden min-h-0"
+            style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}
+          >
+            <p className="text-[2.9cqw] text-white leading-snug">
+            Dat bracht mij bij een van de belangrijkste inzichten uit mijn onderzoek: 
+          <i> De overgang kan zelf onderdeel worden van het ontwerp. </i>
+          Bij generatieve kunst kan de verandering veel abstracter zijn.
+          Bij Anadol hoeft de bezoeker bijvoorbeeld niet te weten welk beeld eerst kwam. Het belangrijkste is dat het systeem voortdurend in beweging blijft.
+            </p>
+          </div>
+          <div
+            className="flex-1 rounded flex items-center p-2 overflow-hidden min-h-0"
+            style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}
+          >
+            <p className="text-[2.9cqw] text-white leading-snug">
+            Een vloeiende overgang kan rust geven. Een abrupte overgang kan spanning creëren. Herhaling kan ritme veroorzaken en verandering kan ontwikkeling suggereren.
+          De designer ontwerpt daardoor niet alleen objecten, maar ook de relaties tussen die objecten.
+            </p>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+
+  // 28 — Page 27 — Conclusie
+  {
+    id: "page-27",
+    content: (
+      <div className="flex w-full h-full items-center justify-center">
+        <div className="rounded p-5 w-[100%] h-[100%] flex items-center justify-center overflow-hidden" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+          <p className="text-[2.9cqw] text-white leading-relaxed">
+          
+          Doorheen mijn onderzoek begon ik met vijf verschillende thema's: Sound Design, Data-driven grafische objecten, Grafiek in tijd & ruimte, Interactieve informatiestructuren en Sequentiële grafische systemen.
+          Hoe verder ik onderzocht, hoe duidelijker het werd dat deze thema's eigenlijk sterk met elkaar verbonden zijn.
+          Sound design laat zien hoe geluid kan bewegen en veranderen. Data-driven design laat zien hoe een systeem zelf beelden kan genereren. Grafiek in tijd en ruimte maakt beweging en omgeving onderdeel van het ontwerp. Interactieve systemen betrekken de gebruiker bij het proces. Sequentiële systemen verbinden al deze elementen door ze als een reeks van veranderingen te bekijken.
+          Refik Anadol vormt daarin een belangrijke case study. In zijn werk komen verschillende van deze ideeën samen. Data wordt materiaal, algoritmes worden creatieve systemen, beelden bewegen door tijd en ruimte, geluid vult de omgeving en de bezoeker wordt onderdeel van de ervaring.
+          Daarom zie ik Machine Hallucinations niet alleen als een voorbeeld van AI-kunst. Voor mij toont het vooral hoe grafisch ontwerp kan evolueren van een vast beeld naar een systeem dat voortdurend verandert.
+          <br /><br />
+          Ook mijn eigen magazine sluit hierbij aan. Het bestaat niet alleen uit pagina's, maar uit code, navigatie, beweging, interactie en verschillende manieren waarop de gebruiker door de inhoud kan gaan.
+          Mijn onderzoek heeft daardoor mijn kijk op grafisch ontwerp veranderd.
+          Een ontwerp hoeft niet altijd iets te zijn dat je alleen bekijkt.
+          Het kan iets zijn dat je hoort, beweegt, beïnvloedt, ontdekt en ervaart.
+          Grafisch ontwerp wordt dan niet alleen een beeld, maar een levende ervaring.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+
+  // 29 — BACK COVER (weer los/solo — komt pas ná pagina 27)
   {
     id: "back-cover",
     content: (
@@ -826,8 +916,8 @@ const pages: Page[] = [
   },
 ];
 
-// LET OP: dit is de INDEX van de laatste spread (0-14 = 15 spreads), niet het aantal.
-const totalSpreads = 14;
+// LET OP: dit is de INDEX van de laatste spread (0-15 = 16 spreads), niet het aantal.
+const totalSpreads = 15;
 const totalPages = pages.length - 1;
 
 type SpreadMeta = {
@@ -842,7 +932,7 @@ type SpreadMeta = {
 const spreadMeta: SpreadMeta[] = [
   { left: null, right: null },                                                                                             // 0 — cover
   { left: null, right: { pageNumber: 1, theme: "Introduction" } },                                                          // 1 — solo intro
-  { left: { pageNumber: 2, theme: "Introduction" }, right: { pageNumber: 3, theme: "Sound Design" } },                      // 2
+  { left: { pageNumber: 2, theme: "Inhouds tafel" }, right: { pageNumber: 3, theme: "Sound Design" } },                      // 2
   { left: { pageNumber: 4, theme: "Sound Design" }, right: { pageNumber: 5, theme: "Sound Design" } },                      // 3
   { left: { pageNumber: 6, theme: "Sound Design" }, right: { pageNumber: 7, theme: "Sound Design" } },                      // 4
   { left: { pageNumber: 8, theme: "Data driven grafische objecten" }, right: { pageNumber: 9, theme: "Data driven grafische objecten" } }, // 5
@@ -853,8 +943,8 @@ const spreadMeta: SpreadMeta[] = [
   { left: { pageNumber: 18, theme: "Interactieve informatie structuren" }, right: { pageNumber: 19, theme: "Interactieve informatie structuren" } }, // 10
   { left: { pageNumber: 20, theme: "Interactieve informatie structuren" }, right: { pageNumber: 21, theme: "Sequentiële grafische systemen" } },     // 11
   { left: { pageNumber: 22, theme: "Sequentiële grafische systemen" }, right: { pageNumber: 23, theme: "Sequentiële grafische systemen" } },         // 12
-  { left: { pageNumber: 24, theme: "Sequentiële grafische systemen" }, right: { pageNumber: 25, theme: "Sequentiële grafische systemen" } },         // 13 — page-24 + page-25 (samenvatting)
-  { left: { pageNumber: 26, theme: "Conculsie"}, right: { pageNumber: 27, theme: ""}},       // 14 — page-26 + page-27 (samenvatting)
+  { left: { pageNumber: 24, theme: "Sequentiële grafische systemen" }, right: { pageNumber: 25, theme: "Sequentiële grafische systemen" } },         // 13 — page-24 + page-25
+  { left: { pageNumber: 26, theme: "Sound Design" }, right: { pageNumber: 27, theme: "Conclusie" } },                                                        // 14 — page-26 + page-27
   { left: null, right: null },                                                                                                                        // 15 — rear cover, solo
 ];
 
@@ -865,7 +955,7 @@ pages.forEach((p, i) => { printPages[i] = p.content; });
    Regel: oneven paginanummer = rechterpagina ("Thema | N"), even = linkerpagina ("N | Thema"). */
 const pdfFooters: Record<number, { text: string; align: "left" | "right" }> = {
   2:  { text: "Introduction | 1",                                        align: "right" },
-  3:  { text: "2 | Introduction",                                        align: "left"  },
+  3:  { text: "2 | Inhouds tafel",                                       align: "left"  },
   4:  { text: "Sound Design | 3",                                        align: "right" },
   5:  { text: "4 | Sound Design",                                        align: "left"  },
   6:  { text: "Sound Design | 5",                                        align: "right" },
@@ -889,15 +979,15 @@ const pdfFooters: Record<number, { text: string; align: "left" | "right" }> = {
   24: { text: "Sequentiële grafische systemen | 23",                     align: "right" },
   25: { text: "24 | Sequentiële grafische systemen",                     align: "left"  },
   26: { text: "Sequentiële grafische systemen | 25",                     align: "right" },
-  27: { text: "Conclusie | 26",                                          align: "left" },
-  28: { text: " | 28",                                                   align: "right" },
+  27: { text: "26 | Sound Design",                                        align: "left"  },
+  28: { text: "Conclusie | 27",                                          align: "right" },
 };
 
 // pageMeta[i] hoort bij pages[i] (index = pageNumber + 1, door cover + inside-cover ervoor)
 const pageMeta: ({ pageNumber: number; theme: string } | null)[] = [
   null, null,                                                     // cover, inside-cover
   { pageNumber: 1, theme: "Introduction" },
-  { pageNumber: 2, theme: "Introduction" },
+  { pageNumber: 2, theme: "Inhouds tafel" },
   { pageNumber: 3, theme: "Sound Design" },
   { pageNumber: 4, theme: "Sound Design" },
   { pageNumber: 5, theme: "Sound Design" },
@@ -921,8 +1011,8 @@ const pageMeta: ({ pageNumber: number; theme: string } | null)[] = [
   { pageNumber: 23, theme: "Sequentiële grafische systemen" },
   { pageNumber: 24, theme: "Sequentiële grafische systemen" },
   { pageNumber: 25, theme: "Sequentiële grafische systemen" },
-  { pageNumber: 26, theme: "Conclusie" },
-  { pageNumber: 27, theme: "" },
+  { pageNumber: 26, theme: "Sound Design" },
+  { pageNumber: 27, theme: "Conclusie" },
   null,                                                            // back-cover
 ];
 
@@ -1101,7 +1191,8 @@ export default function Flipbook({
     11, 11,        // 21-22 page-20, page-21
     12, 12,        // 23-24 page-22, page-23
     13, 13,        // 25-26 page-24, page-25
-    14,            // 27 back-cover
+    14, 14,        // 27-28 page-26, page-27
+    15,            // 29 back-cover
   ];
   const goToPage = (idx: number) => {
     updateMobilePage(idx);
@@ -1111,6 +1202,15 @@ export default function Flipbook({
 
   const nextPage = () => updateMobilePage(Math.min(mobilePageIndex + 1, totalPages));
   const prevPage = () => updateMobilePage(Math.max(mobilePageIndex - 1, 0));
+
+  // Maakt goToPage bereikbaar voor de statische `pages`-array (buiten de component,
+  // bv. de klikbare inhoudsopgave op pagina 2) via een globale bridge-functie.
+  useEffect(() => {
+    (window as any).__hallucinateGoToPage = goToPage;
+    return () => {
+      delete (window as any).__hallucinateGoToPage;
+    };
+  });
 
   // Gebruik ref zodat keydown listener niet elke keer opnieuw aangemaakt wordt
   const spreadIndexRef = useRef(spreadIndex);
@@ -1167,7 +1267,8 @@ export default function Flipbook({
       case 11: return { left: pages[21].content, right: pages[22].content };      // page-20, page-21
       case 12: return { left: pages[23].content, right: pages[24].content };      // page-22, page-23
       case 13: return { left: pages[25].content, right: pages[26].content };      // page-24, page-25
-      case 14: return { left: pages[27].content, right: null };                   // back-cover
+      case 14: return { left: pages[27].content, right: pages[28].content };      // page-26, page-27
+      case 15: return { left: pages[29].content, right: null };                    // back-cover
       default: return { left: null, right: null };
     }
   };
@@ -1205,14 +1306,14 @@ export default function Flipbook({
      projectnotities over spread-content-mismatch). */
   const spread1011LeftContent = (
     <>
-      <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-2 overflow-hidden min-h-0">
-        <p className="text-[3.0cqw] text-gray-500 leading-snug">
+      <div className="flex-1 rounded flex items-start justify-start p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+        <p className="text-[3.0cqw] text-white leading-snug">
         Dat werd nog duidelijker tijdens mijn onderzoek naar code poetry. Hierbij wordt de programmeercode zelf onderdeel van het kunstwerk. De code moet dus niet alleen goed werken, maar kan ook visueel of inhoudelijk betekenis krijgen.
         Daaruit kwam voor mij een belangrijk inzicht: 
         </p>
       </div>
-      <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-2 overflow-hidden min-h-0">
-        <p className="text-[3.0cqw] text-gray-500 leading-snug">
+      <div className="flex-1 rounded flex items-start justify-start p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+        <p className="text-[3.0cqw] text-white leading-snug">
         code hoeft niet alleen het gereedschap te zijn waarmee je een ontwerp maakt. Code kan zelf ontwerpmateriaal worden.
         Ook algoritmes kunnen op die manier gebruikt worden. Sorting algorithms zijn bijvoorbeeld gemaakt om gegevens te ordenen. Wanneer je zo'n proces visueel maakt, ontstaat er
         </p>
@@ -1222,15 +1323,15 @@ export default function Flipbook({
 
   const spread1011RightContent = (
     <>
-      <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-2 overflow-hidden min-h-0">
-        <p className="text-[3.0cqw] text-gray-500 leading-snug">
+      <div className="flex-1 rounded flex items-start justify-start p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+        <p className="text-[3.0cqw] text-white leading-snug">
         echter een soort animatie. Je ziet de elementen stap voor stap veranderen totdat ze geordend zijn.
         Een technisch proces wordt zo een visuele compositie.
         Hetzelfde gebeurt bij algoritmische muziek. Een computer kan muzikale fragmenten selecteren en combineren volgens bepaalde regels. 
         </p>
       </div>
-      <div className="flex-1 bg-gray-100 rounded flex items-start justify-start p-2 overflow-hidden min-h-0">
-        <p className="text-[3.0cqw] text-gray-500 leading-snug">
+      <div className="flex-1 rounded flex items-start justify-start p-2 overflow-hidden min-h-0" style={{ background: "linear-gradient(135deg, #141a30 0%, #1e1a3a 100%)" }}>
+        <p className="text-[3.0cqw] text-white leading-snug">
         De maker bepaalt niet iedere afzonderlijke uitkomst, maar bepaalt het systeem.
         <br /><br />
         Hierdoor wordt duidelijk dat generatieve vormgeving niet pas met AI is begonnen. Het idee dat een systeem zelf resultaten kan produceren bestaat al veel langer.
@@ -1277,7 +1378,8 @@ export default function Flipbook({
         [21,   22],  // page-20, page-21
         [23,   24],  // page-22, page-23
         [25,   26],  // page-24, page-25
-        [27,   null],// back-cover
+        [27,   28],  // page-26, page-27
+        [29,   null],// back-cover
       ];
 
       const A4_WIDTH_MM = 297;
@@ -1325,6 +1427,7 @@ export default function Flipbook({
               const clone = source.cloneNode(true) as HTMLElement;
               clone.style.width = "100%";
               clone.style.height = "100%";
+              clone.style.containerType = "inline-size";
               // Video/canvas/iframe kan html2canvas niet renderen en laat het proces hangen — negeren.
               clone.querySelectorAll("video, canvas, iframe").forEach((el) => el.remove());
               side.appendChild(clone);
@@ -1368,7 +1471,7 @@ export default function Flipbook({
         try {
           const canvas = await withTimeout(
             html2canvas(spreadEl, {
-              scale: 1.5,
+              scale: 1.25,
               useCORS: true,
               backgroundColor: "#ffffff",
               imageTimeout: 8000,
@@ -1507,7 +1610,7 @@ export default function Flipbook({
           </button>
         ))}
 
-        <span className="md:hidden text-xs text-gray-500">
+        <span className="hidden text-xs text-gray-500">
           {mobilePageIndex + 1} / {totalPages + 1}
         </span>
 
@@ -1528,7 +1631,7 @@ export default function Flipbook({
           disabled={isExportingPDF}
           data-pdf-btn
           aria-label="Download als PDF"
-          className={`flex items-center gap-2 px-5 py-2 text-xs rounded disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${
+          className={`hidden md:flex items-center gap-2 px-5 py-2 text-xs rounded disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${
             isFullscreen
               ? "bg-white text-black hover:bg-gray-200"
               : "bg-black text-white hover:bg-gray-800"
@@ -1570,7 +1673,7 @@ export default function Flipbook({
         <button
           onClick={toggleFullscreen}
           aria-label={isFullscreen ? "Exit fullscreen" : "Fullscreen"}
-          className={`flex items-center gap-2 px-5 py-2 text-xs rounded transition-colors ${
+          className={`hidden md:flex items-center gap-2 px-5 py-2 text-xs rounded transition-colors ${
             isFullscreen
               ? "bg-white text-black hover:bg-gray-200"
               : "bg-black text-white hover:bg-gray-800"
@@ -1597,7 +1700,7 @@ export default function Flipbook({
         <button
           onClick={() => setHandTrackingEnabled((v) => !v)}
           aria-label={handTrackingEnabled ? "Handtracker uitzetten" : "Handtracker aanzetten"}
-          className={`flex items-center gap-2 px-5 py-2 text-xs rounded transition-colors ${
+          className={`hidden md:flex items-center gap-2 px-5 py-2 text-xs rounded transition-colors ${
             handTrackingEnabled
               ? "bg-green-600 text-white hover:bg-green-700"
               : isFullscreen
@@ -1625,22 +1728,32 @@ export default function Flipbook({
           >
             ✕
           </button>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 max-w-6xl mx-auto pt-10">
+          <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 max-w-6xl mx-auto pt-10">
             {pages.map((page, idx) => (
-              <button
+              <div
                 key={page.id}
+                role="button"
+                tabIndex={0}
                 onClick={() => goToPage(idx)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    goToPage(idx);
+                  }
+                }}
                 aria-label={idx === 0 ? "Ga naar cover" : `Ga naar pagina ${idx}`}
-                className="relative bg-white rounded shadow overflow-hidden hover:ring-2 hover:ring-white transition-all"
-                style={{ width: "140px", height: "196px" }}
+                className="relative bg-white rounded shadow overflow-hidden hover:ring-2 hover:ring-white transition-all mx-auto cursor-pointer"
+                style={{ width: "128px", height: "179px" }}
               >
                 <div
                   style={{
                     width: "500px",
                     height: "700px",
-                    transform: "scale(0.28)",
+                    transform: "scale(0.256)",
                     transformOrigin: "top left",
                     pointerEvents: "none",
+                    containerType: "inline-size",
+                    overflow: "hidden",
                   }}
                 >
                   {page.content}
@@ -1648,7 +1761,7 @@ export default function Flipbook({
                 <span className="absolute bottom-1 right-1 bg-black/70 text-white text-[10px] px-1.5 py-0.5 rounded">
                   {idx === 0 ? "Cover" : idx}
                 </span>
-              </button>
+              </div>
             ))}
           </div>
         </div>
@@ -1662,7 +1775,7 @@ export default function Flipbook({
             <div
               key={page.id}
               id={`pdf-page-${idx}`}
-              style={{ width: "500px", height: "700px", background: "white", overflow: "hidden", position: "relative" }}
+              style={{ width: "500px", height: "700px", background: "white", overflow: "hidden", position: "relative", containerType: "inline-size" }}
             >
               <div style={{ width: "100%", height: footer ? "calc(100% - 22px)" : "100%", overflow: "hidden" }}>
                 {page.content}
